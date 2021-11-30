@@ -19,3 +19,18 @@
   color: white;
   padding: 3%;
 }
+
+.CardContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  order: 4;
+  justify-content: space-evenly;
+  margin: 10%;
+}
+
+.CardContainer img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}

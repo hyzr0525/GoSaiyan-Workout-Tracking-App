@@ -32,7 +32,7 @@ function App() {
 
     <Switch>
        <Route exact path="/">
-          <Homepage musclesList={musclesList}/>
+          <Homepage musclesList={musclesList} exercisesList={exercisesList}/>
        </Route>
     </Switch>
     </div>

@@ -1,9 +1,13 @@
 import React from 'react'
+import ExerciseCards from './ExerciseCards'
 
-function CardContainer() {
+function CardContainer({exercisesList}) {
+
+    const exerciseCards = exercisesList.map(exercises => <ExerciseCards name={exercises.name} image={exercises.image} key={exercises.id}/>)
+
     return (
-        <div>
-            
+        <div className="CardContainer">
+            {exerciseCards}
         </div>
     )
 }

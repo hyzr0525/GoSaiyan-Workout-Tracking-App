@@ -2,7 +2,7 @@ import React from 'react'
 import CardContainer from './CardContainer'
 import NavBar from './NavBar'
 
-function Homepage({musclesList}) {
+function Homepage({musclesList, exercisesList}) {
 
     const muscleGroups = musclesList.map(muscles => <NavBar key={muscles.id} name={muscles.name}/>)
     
@@ -11,7 +11,7 @@ function Homepage({musclesList}) {
             <div className="NavBar">
             {muscleGroups}
             </div>
-            <CardContainer />
+            <CardContainer exercisesList={exercisesList}/>
         </div>
     )
 }
