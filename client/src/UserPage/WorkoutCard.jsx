@@ -1,11 +1,11 @@
 import React from 'react'
 
-function CardDetail() {
+function WorkoutCard() {
     return (
         <div>
-            Card Detail
+            
         </div>
     )
 }
 
-export default CardDetail
+export default WorkoutCard

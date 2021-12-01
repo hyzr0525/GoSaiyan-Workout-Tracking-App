@@ -1,4 +1,5 @@
 import React from 'react'
+import CardDetail from './CardDetail'
 
 function ExerciseCards({name, image}) {
 
@@ -6,6 +7,7 @@ function ExerciseCards({name, image}) {
         <div>
             <img src={image} />
             <p>{name}</p>
+            <CardDetail />
         </div>
     )
 }

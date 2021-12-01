@@ -8,6 +8,7 @@ function App() {
   
   const [exercisesList, setExercisesList] = useState([])
   const [musclesList, setMusclesList] = useState([])
+  const [currentUser, setCurrentUser] = useState({})
 
 
   useEffect(() => {
@@ -21,13 +22,11 @@ function App() {
 
   }, [])
 
-  console.log(exercisesList)
-  console.log(musclesList)
 
   return (
     <div className="App">
   
-          <Header />
+          <Header setCurrentUser={setCurrentUser} currentUser={currentUser}/>
         
 
     <Switch>
