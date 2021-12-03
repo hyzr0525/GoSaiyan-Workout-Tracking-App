@@ -10,7 +10,8 @@ const FormStyle = {
     transform: `translate(-50%, -50%)`,
     backgroundColor: `#FFF`,
     zIndex: 1000,
-    padding: `250px`,
+    padding: `200px`,
+    borderRadius: `10px`
 }
 
 const OverLay ={
@@ -125,8 +126,6 @@ function LoginForm({ open, onClose, formSwitch, setFormSwitch, setCurrentUser, s
         <button class="btn btn-primary" onClick={()=>setFormSwitch(true)}>Back</button>
       </form>
     </>
-
-    console.log(signUpInput)
 
     if (!open) return null
 

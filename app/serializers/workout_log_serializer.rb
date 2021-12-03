@@ -1,5 +1,5 @@
 class WorkoutLogSerializer < ActiveModel::Serializer
-  attributes :id, :note, :set, :rep
+  attributes :id, :note, :set, :rep, :exercise_id, :workout_session_id
   has_one :workout_session
   has_one :exercise
 end

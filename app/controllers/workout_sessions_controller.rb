@@ -5,17 +5,19 @@ class WorkoutSessionsController < ApplicationController
         if workoutSession
         workoutSession.destroy
         else
-        render json: {error: "Book not found"}, status: :not_found
+        render json: {error: "Workout session not found"}, status: :not_found
         end
     end
 
     def index
-        workoutSessions = current_user.workout_sessions.all
-        render json: workoutSessions
+        
+        workoutSessions = current_user.workout_sessions
+        render json: workoutSessions, status: :ok
     end
 
     def show
         user_workout_session = current_user.workout_sessions.find_by(id: params[:id])
+        
         if user_workout_session
         render json: user_workout_session
         else
@@ -24,8 +26,8 @@ class WorkoutSessionsController < ApplicationController
     end
 
     def create
-        new_workout_session = WorkoutSession.new(workout_session_params)
-        if WorkoutSession.save
+        new_workout_session = current_user.workout_sessions.new(workout_session_params)
+        if new_workout_session.save
             render json: new_workout_session, status: :ok
         else
             render json: new_workout_session.errors.full_messages, status: :unprocessable_entity
@@ -45,7 +47,7 @@ class WorkoutSessionsController < ApplicationController
     private
 
     def workout_session_params
-        params.permit(:title, :weekday)
+        params.permit(:title, :weekday, :user_id)
     end
 
 end

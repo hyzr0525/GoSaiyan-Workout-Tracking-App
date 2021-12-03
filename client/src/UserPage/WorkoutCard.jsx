@@ -1,9 +1,11 @@
 import React from 'react'
 
-function WorkoutCard() {
+function WorkoutCard({title, weekday}) {
+    
     return (
-        <div>
-            
+        <div className="WorkoutList">
+            <h3>{title}</h3>
+            <h3>{weekday}</h3> 
         </div>
     )
 }

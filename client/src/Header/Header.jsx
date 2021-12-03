@@ -4,23 +4,25 @@ import {useState, useEffect} from 'react'
 import LoginForm from './LoginForm'
 import LoggedIn from './LoggedIn'
 
-function Header({setCurrentUser, currentUser}) {
+function Header({setUserWorkouts, setCurrentUser, currentUser, setLoggedIn, loggedIn}) {
 
     const [popUp, setPopUp] = useState(false)
     const [formSwitch, setFormSwitch] = useState(true)
-    const [loggedIn, setLoggedIn] = useState(false)
+    
 
     const togglePopUp = () => {setPopUp(true)}
 
-    useEffect(() => {
-        fetch('/me')
-        .then(res => res.json())
-        .then(user => {
-            setCurrentUser(user)
-            setLoggedIn(true)
-        }) 
-      
-     }, [])
+    // useEffect(() => {
+    //     fetch('/me')
+    //     .then(res => res.json())
+    //     .then(user => {
+    //         setCurrentUser(user)
+    //         if (user = {error: "no active session"}) {
+    //         setLoggedIn(false)}
+    //         else {
+    //         setLoggedIn(true)}
+    //     }) 
+    //  }, [])
 
 
     return (
@@ -35,7 +37,7 @@ function Header({setCurrentUser, currentUser}) {
               setCurrentUser={setCurrentUser} 
               setLoggedIn={setLoggedIn}
               onClose={() => setPopUp(false)} 
-            /> : <LoggedIn setLoggedIn={setLoggedIn} currentUser={currentUser} setPopUp={setPopUp}/>}
+            /> : <LoggedIn setLoggedIn={setLoggedIn} currentUser={currentUser} setUserWorkouts={setUserWorkouts} setPopUp={setPopUp}/>}
 
         </div>
     )
