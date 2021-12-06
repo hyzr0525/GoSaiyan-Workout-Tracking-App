@@ -12,17 +12,17 @@ function Header({setUserWorkouts, setCurrentUser, currentUser, setLoggedIn, logg
 
     const togglePopUp = () => {setPopUp(true)}
 
-    // useEffect(() => {
-    //     fetch('/me')
-    //     .then(res => res.json())
-    //     .then(user => {
-    //         setCurrentUser(user)
-    //         if (user = {error: "no active session"}) {
-    //         setLoggedIn(false)}
-    //         else {
-    //         setLoggedIn(true)}
-    //     }) 
-    //  }, [])
+    useEffect(() => {
+        fetch('/me')
+        .then(res => res.json())
+        .then(user => {
+            setCurrentUser(user)
+            if (user = {error: "no active session"}) {
+            setLoggedIn(false)}
+            else {
+            setLoggedIn(true)}
+        }) 
+     }, [])
 
 
     return (

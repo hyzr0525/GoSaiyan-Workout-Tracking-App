@@ -1,4 +1,5 @@
 import React from 'react'
+import WorkoutLog from '../EditingPage/WorkoutLog'
 
 
 const FormStyle = {
@@ -23,23 +24,25 @@ const OverLay ={
 }
 
 
-function CardDetail({setShowDetail, open, name, image, muscle, muscleImg, desc}) {
+function CardDetail({setShowDetail, open, name, image, muscle, muscleImg, desc, editWorkout, id, sessionId}) {
 
     if (!open) return null
 
     const onClose = () => {setShowDetail(false)}
 
     return (
-        <div style={OverLay} onClick={onClose}>
+        <div style={OverLay}>
             <div style={FormStyle}>
             <h3>{name}</h3>
             <img src={image} />
             <img src={muscleImg} />
             <h5>Muscle Group: {muscle}</h5>
             <p>{desc}</p>
-            <button onClick={onClose} class="btn btn-primary">Close</button>
+            {editWorkout? <WorkoutLog id ={id} editWorkout={editWorkout} sessionId={sessionId}/> : null}
+        <button onClick={onClose} class="btn btn-primary">Close</button>
             </div>
         </div>
+        
     )
 }
 

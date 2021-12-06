@@ -15,8 +15,8 @@ class WorkoutLogsController < ApplicationController
     end
 
     def create
-        workoutLog = WorkoutLog.new(workout_log_params)
-        if WorkoutLog.save
+        workoutLog = WorkoutLog.create(workout_log_params)
+        if workoutLog.valid?
             render json: workoutLog, status: :ok
         else
             render json: workoutLog.errors.full_messages, status: :unprocessable_entity
@@ -33,9 +33,18 @@ class WorkoutLogsController < ApplicationController
         end
     end
 
+    def destroy
+        workoutLog = WorkoutLog.find_by(id: params[:id])
+        if workoutLog
+        workoutLog.destroy
+        else
+        render json: {error: "Workout session not found"}, status: :not_found
+        end
+    end
+
     private
 
     def workout_log_params
-        params.permit(:note, :set, :rep)
+        params.permit(:note, :set, :rep, :exercise_id, :workout_session_id)
     end
 end

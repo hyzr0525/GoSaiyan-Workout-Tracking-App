@@ -5,7 +5,7 @@ import Header from './Header/Header';
 import Homepage from './Homepage/Homepage';
 import UserPage from './UserPage/UserPage';
 import EditingPage from './EditingPage/EditingPage';
-import {useParams} from 'react-router-dom'
+import WorkoutPage from './WorkoutPage/WorkoutPage';
 
 function App() {
   
@@ -16,6 +16,7 @@ function App() {
   const [createWorkout, setCreateWorkout] = useState([])
   const [userWorkouts, setUserWorkouts] = useState([])
   const [sessionWorkouts, setSessionWorkouts] = useState([])
+  const [editWorkout, setEditWorkout] = useState(false)
 
 
   // const id = useParams().id
@@ -52,7 +53,7 @@ function App() {
 
     <Switch>
        <Route exact path="/">
-          <Homepage musclesList={musclesList} exercisesList={exercisesList}/>
+          <Homepage musclesList={musclesList} exercisesList={exercisesList} setExercisesList={setExercisesList}/>
        </Route>
 
        <Route exact path="/user">
@@ -60,8 +61,13 @@ function App() {
        </Route>
 
        <Route exact path="/edit/:id">
-       <EditingPage musclesList={musclesList} exercisesList={exercisesList} sessionWorkouts={sessionWorkouts} setSessionWorkouts={setSessionWorkouts} setLoggedIn={setLoggedIn}/>
+       <EditingPage musclesList={musclesList} exercisesList={exercisesList} sessionWorkouts={sessionWorkouts} setSessionWorkouts={setSessionWorkouts} setLoggedIn={setLoggedIn} setEditWorkout={setEditWorkout} editWorkout={editWorkout}/>
        </Route>
+       
+       <Route exact path="/WorkoutSessions/:id">
+        <WorkoutPage sessionWorkouts={sessionWorkouts} setSessionWorkouts={setSessionWorkouts} setLoggedIn={setLoggedIn} editWorkout={editWorkout}/>
+       </Route>
+
     </Switch>
     </div>
   );

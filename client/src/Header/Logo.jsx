@@ -1,9 +1,12 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 function Logo() {
     return (
         <div>
-            <h1>Workout Tracking App</h1>
+            <Link exact to="/">
+            <h1>GoSaiyan</h1>
+            </Link>
         </div>
     )
 }

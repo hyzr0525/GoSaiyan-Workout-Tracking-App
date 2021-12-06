@@ -17,7 +17,7 @@ function UserPage({setLoggedIn, setCreateWorkout, userWorkouts, setUserWorkouts}
         setLoggedIn(true)
     }, [])
 
-    const workoutList = userWorkouts.map(workouts => <WorkoutCard title={workouts.title} weekday={workouts.weekday} key={workouts.id}/>)
+    const workoutList = userWorkouts.map(workouts => <Link to={`/WorkoutSessions/${workouts.id}`}> <WorkoutCard title={workouts.title} weekday={workouts.weekday} key={workouts.id}/> </Link>)
 
     return (
         <div>

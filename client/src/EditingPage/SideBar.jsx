@@ -3,37 +3,32 @@ import {useHistory} from 'react-router-dom'
 import {useState} from 'react'
 
 
-function SideBar({exercise}) {
+function SideBar({exerciseImg, muscleName, muscleImg, sets, reps, note, exercise, workoutLogId, desc, setNote, setWorkoutSets, setReps, setExerciseName, setExerciseImg, setDesc, setMuscleName, setMuscleImg, setExerciseId, exerciseId, setWorkoutLogId, editWorkout}) {
 
-    let history = useHistory();
 
-    const [input , setInput] = useState({
-        username: "",
-        password: "",
-    })
-
-    function formFill(e){
-        setInput({...input, [e.target.name]: e.target.value})
-        
-    }
-
-    function createWorkout(e){
-        e.preventDefault()
-        fetch("http://localhost:3000/workout_sessions", {
-            method : 'POST',
-            headers :{"Content-Type":"application/json"},
-            body: JSON.stringify(input)
-        })
-        .then(res=>res.json())
-        .then(newWorkout => {
-            console.log(newWorkout)
-            history.push('/')
-        })
+    function deleteExercise(){
+    fetch(`http://localhost:3000/workout_logs/${workoutLogId}`, {
+        method: "DELETE"})
     }
     
+    function handleChange(){
+        setDesc(desc)
+        setNote(note)
+        setWorkoutSets(sets)
+        setReps(reps)
+        setExerciseImg(exerciseImg)
+        setExerciseName(exercise)
+        setMuscleName(muscleName)
+        setMuscleImg(muscleImg)
+        setExerciseId(exerciseId)
+        setWorkoutLogId(workoutLogId)
+    }
+
     return (
       <div>
-            <p>{exercise}</p>
+            <p onClick={handleChange}>{exercise}
+            {editWorkout ? <button onClick={deleteExercise}>x</button> : null}
+            </p>
       </div>
     )
 }
