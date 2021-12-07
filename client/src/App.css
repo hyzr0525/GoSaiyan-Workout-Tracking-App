@@ -2,26 +2,58 @@
   text-align: center;
 }
 
+body{
+  background-color: #555a63 ;
+}
+
 .Header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: slategrey;
+  background-color: #ed8728;
   color: white;
   padding: 3%;
   width: 100vw;
 
 }
 
+.Logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Logo img{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
 .NavBar {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  background-color: slategrey;
+  background-color:#ed8728;
   color: white;
   width: 100vw;
-  
+}
+
+button{
+  border-radius: 5px;
+  background-color: #ed8728;
+  border: 0px;
+  color: white;
+  padding: 10px;
+}
+
+button :hover{
+  background-color: #ad6521;
 }
 
 .CardContainer {
@@ -31,6 +63,10 @@
   order: 4;
   justify-content: space-evenly;
   margin: 10%;
+  padding: 2%;
+  padding-top: 5%;
+  color: white;
+  background-color: e4 ;
 }
 
 .CardContainer img {
