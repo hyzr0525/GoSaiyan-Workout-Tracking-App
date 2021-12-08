@@ -4,7 +4,7 @@ import {useState} from 'react'
 
 
 
-function ExerciseDetails({note, workoutSets, reps, exerciseName, exerciseImg, desc, muscleName, muscleImg, id, exerciseId, workoutLogId}) {
+function ExerciseDetails({note, workoutSets, reps, exerciseName, exerciseImg, desc, muscleName, muscleImg, id, exerciseId, workoutLogId, setLoggedIn}) {
 
     const [editLog, setEditLog] = useState(false)
     
@@ -27,7 +27,8 @@ function ExerciseDetails({note, workoutSets, reps, exerciseName, exerciseImg, de
             <img src={muscleImg} />
             <h5>Muscle Group: {muscleName}</h5>
             <p>{desc}</p>
-            {editLog === false ? logDetail: <UpdateWorkoutLog id={id} exerciseId={exerciseId}workoutLogId={workoutLogId}setEditLog={setEditLog}/>}
+            <hr />
+            {editLog === false ? logDetail: <UpdateWorkoutLog id={id} exerciseId={exerciseId}workoutLogId={workoutLogId}setEditLog={setEditLog} setLoggedIn={setLoggedIn}/>}
             
         </div>
     )

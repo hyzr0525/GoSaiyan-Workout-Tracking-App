@@ -3,12 +3,15 @@ import {useHistory} from 'react-router-dom'
 import {useState} from 'react'
 
 
-function SideBar({exerciseImg, muscleName, muscleImg, sets, reps, note, exercise, workoutLogId, desc, setNote, setWorkoutSets, setReps, setExerciseName, setExerciseImg, setDesc, setMuscleName, setMuscleImg, setExerciseId, exerciseId, setWorkoutLogId, editWorkout}) {
+function SideBar({exerciseImg, setSessionWorkouts, muscleName, muscleImg, sets, reps, note, exercise, workoutLogId, desc, setNote, setWorkoutSets, setReps, setExerciseName, setExerciseImg, setDesc, setMuscleName, setMuscleImg, setExerciseId, exerciseId, setWorkoutLogId, editWorkout}) {
 
 
     function deleteExercise(){
     fetch(`http://localhost:3000/workout_logs/${workoutLogId}`, {
-        method: "DELETE"})
+        method: "DELETE"
+    })
+    .then(res => res.json())
+    .then(setSessionWorkouts)
     }
     
     function handleChange(){
@@ -25,9 +28,9 @@ function SideBar({exerciseImg, muscleName, muscleImg, sets, reps, note, exercise
     }
 
     return (
-      <div>
+      <div className="SideBarList">
             <p onClick={handleChange}>{exercise}
-            {editWorkout ? <button onClick={deleteExercise}>x</button> : null}
+            {editWorkout ? <button className="DeleteBtn" onClick={deleteExercise}>x</button> : null}
             </p>
       </div>
     )

@@ -27,7 +27,9 @@ function Header({setUserWorkouts, setCurrentUser, currentUser, setLoggedIn, logg
 
     return (
         <div className="Header">
+            
             <Logo />
+            
             { loggedIn === false ? <button onClick={togglePopUp}>Login</button> : null}
 
             {loggedIn === false ? <LoginForm

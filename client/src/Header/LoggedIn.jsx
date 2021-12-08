@@ -15,7 +15,7 @@ function LoggedIn({currentUser, setLoggedIn, setPopUp}) {
 
 
     return (
-        <div>
+        <div className="Logged-in">
             <p>Welcome, {currentUser.username}!</p>
             <Link exact to="/user">
             <button>My Workout</button>

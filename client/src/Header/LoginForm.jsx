@@ -10,8 +10,9 @@ const FormStyle = {
     transform: `translate(-50%, -50%)`,
     backgroundColor: `#FFF`,
     zIndex: 1000,
-    padding: `200px`,
-    borderRadius: `10px`
+    padding: `100px`,
+    borderRadius: `10px`,
+    
 }
 
 const OverLay ={
@@ -83,6 +84,7 @@ function LoginForm({ open, onClose, formSwitch, setFormSwitch, setCurrentUser, s
     const loginForm = 
     <>
      <form className="Form" onSubmit={handleSubmit}>
+        <img src="https://i.pinimg.com/originals/5e/37/d3/5e37d353b188ffdbf1b23b5495061285.jpg"/>
        <input
         type='text'
         name='username'
@@ -96,14 +98,15 @@ function LoginForm({ open, onClose, formSwitch, setFormSwitch, setCurrentUser, s
         onChange={formFill}
         />
        <button
-       type='submit' class="btn btn-primary">Sign In</button>
+       type='submit'>Sign In</button>
      </form>
-       <button class="btn btn-primary" onClick={()=>setFormSwitch(false)}>Sign Up</button>
+       <button onClick={()=>setFormSwitch(false)}>Sign Up</button>
     </>
 
     const signUpForm =
     <>
       <form className="Form" onSubmit={handleSignUp}>
+        <img src="https://i.pinimg.com/originals/5e/37/d3/5e37d353b188ffdbf1b23b5495061285.jpg"/>
         <input
         type='text'
         name='username'
@@ -122,8 +125,8 @@ function LoginForm({ open, onClose, formSwitch, setFormSwitch, setCurrentUser, s
         placeholder='Input weight'
         onChange={formSignUP}
         />
-        <button type='submit' class="btn btn-primary">Sign Up</button>
-        <button class="btn btn-primary" onClick={()=>setFormSwitch(true)}>Back</button>
+        <button type='submit'>Sign Up</button>
+        <button onClick={()=>setFormSwitch(true)}>Back</button>
       </form>
     </>
 
@@ -134,7 +137,7 @@ function LoginForm({ open, onClose, formSwitch, setFormSwitch, setCurrentUser, s
      <div style={OverLay}>
        <div style={FormStyle}>
             {formSwitch? loginForm:signUpForm}
-            <button class="btn btn-primary" onClick={onClose}>Close</button>
+            <button className="CloseBtn" onClick={onClose}>X</button>
       </div>
      </div>
         </>

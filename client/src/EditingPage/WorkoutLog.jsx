@@ -53,7 +53,7 @@ function WorkoutLog({editWorkout, id, sessionId}) {
         placeholder='Any Notes'
         onChange={formFill}
         />
-        <button type='submit' class="btn btn-primary">Save</button>
+        <button type='submit'>Save</button>
       </form>
         </div>
     )

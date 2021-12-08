@@ -9,8 +9,9 @@ const FormStyle = {
     transform: `translate(-50%, -50%)`,
     backgroundColor: `#FFF`,
     zIndex: 1000,
-    padding: `200px`,
+    padding: `100px`,
     borderRadius: `10px`
+    
 }
 
 const OverLay ={
@@ -56,6 +57,7 @@ function CreateWorkout({open, onClose, setCreateWorkout}) {
     return (
     <div style={OverLay}>
       <div style={FormStyle}>
+          <img className="CreatWorkoutImg" src= "https://i.pinimg.com/736x/ca/8a/26/ca8a26805b61221ec14db64c2843cbc7.jpg"/>
         <form className="Form" onSubmit={createNewWorkout}>
         <input
         type='text'
@@ -69,9 +71,9 @@ function CreateWorkout({open, onClose, setCreateWorkout}) {
         placeholder='Days Of The Week'
         onChange={Workoutform}
         />
-        <button type='submit' class="btn btn-primary">Create</button>
+        <button type='submit'>Create</button>
         </form>
-        <button class="btn btn-primary" onClick={onClose}>Close</button>
+        <button className="CloseBtn" onClick={onClose}>X</button>
       </div>
     </div>
     )

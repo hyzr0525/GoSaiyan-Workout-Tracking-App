@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
 
-function UpdateWorkoutLog({id, exerciseId, workoutLogId, setEditLog}) {
+function UpdateWorkoutLog({id, exerciseId, workoutLogId, setEditLog, setLoggedIn}) {
 
     const [logInput , setLogInput] = useState({
         set: "",
@@ -16,8 +16,7 @@ function UpdateWorkoutLog({id, exerciseId, workoutLogId, setEditLog}) {
         
     }
 
-    function updateLog(e){
-        e.preventDefault()
+    function updateLog(){
         fetch(`http://localhost:3000/workout_logs/${workoutLogId}`, {
             method : 'Put',
             headers :{"Content-Type":"application/json"},
@@ -26,7 +25,7 @@ function UpdateWorkoutLog({id, exerciseId, workoutLogId, setEditLog}) {
         .then(res=>res.json())
         .then(LogData => {
              setEditLog(false)
-            // setLoggedIn(true)
+            setLoggedIn(true)
           })
     }
 
@@ -51,8 +50,8 @@ function UpdateWorkoutLog({id, exerciseId, workoutLogId, setEditLog}) {
         placeholder='Any Notes'
         onChange={formFill}
         />
-        <button type='submit' class="btn btn-primary">Save</button>
-        <button class="btn btn-primary" onclick = {()=>setEditLog(false)}>Back</button>
+        <button type='submit'>Save</button>
+        <button onclick = {()=>setEditLog(false)}>Back</button>
       </form>
         </div>
     )

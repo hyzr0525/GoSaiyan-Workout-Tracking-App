@@ -3,36 +3,53 @@
 }
 
 body{
-  background-color: #555a63 ;
+  background-color: #252629 ;
 }
 
 .Header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   background-color: #ed8728;
   color: white;
-  padding: 3%;
+  padding: 2%;
   width: 100vw;
-
+  height: 25vh;
+  background-image: url(http://www.skinit.com/media/catalog/category/dragon-ball-z_1_1.jpg);
+  background-size:cover;
+  background-position:center;
 }
 
 .Logo {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  
 }
 
 .Logo img{
-  width: 100px;
-  height: 100px;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
+  margin-right: 5px;
+}
+
+.Logged-in {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 }
 
 a {
   text-decoration: none;
   color: white;
+}
+
+.CreatWorkoutImg{
+  width: 400px;
+  height: 500px;
+  object-fit: cover;
 }
 
 .NavBar {
@@ -41,7 +58,17 @@ a {
   justify-content: space-evenly;
   background-color:#ed8728;
   color: white;
-  width: 100vw;
+  width: 80%;
+  top: 25vh;
+  border-radius: 15px;
+  margin-left: 10%;
+  margin-top: 20px;
+  padding: 5px;
+
+}
+
+.MuscleList:hover{
+  cursor: pointer;
 }
 
 button{
@@ -50,11 +77,48 @@ button{
   border: 0px;
   color: white;
   padding: 10px;
+  margin: 5px;
 }
 
-button :hover{
-  background-color: #ad6521;
+button:hover{
+  background-color: #bd6f26;
 }
+
+.CloseBtn{ 
+  position:absolute;
+  right: 10px;
+  top: 10px;
+  background-color: white;
+  color:black;
+  font-size: 20px;
+}
+
+.CloseBtn:hover{
+  background-color: white;
+  color: #ed8728;
+}
+
+.DeleteBtn{
+  background-color: #51545a;
+}
+
+.DeleteBtn:hover{
+  color: #ed8728;
+  background-color:#51545a ;
+}
+
+.CreateWorkoutBtn{
+  background-color: #252629;
+  color: #ed8728;
+  font-size: 24px;
+}
+
+.CreateWorkoutBtn:hover{
+  cursor: pointer;
+  background-color:#252629 ;
+
+}
+
 
 .CardContainer {
   display: flex;
@@ -62,39 +126,138 @@ button :hover{
   flex-wrap: wrap;
   order: 4;
   justify-content: space-evenly;
-  margin: 10%;
-  padding: 2%;
+  margin-top: 2%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10%;
   padding-top: 5%;
+  color: #252629;
+  background-color: #51545a ;
+  border-radius: 10px;
+  
+}
+
+.CardDetails{
+  background-color: #ed8728;
+  margin: 10px;
+  padding-bottom: 0px;
   color: white;
-  background-color: e4 ;
+  border-radius: 10px;
+  transition: top 1s, right 1s;
+}
+
+.CardDetails:hover{
+  cursor: pointer;
+  position: relative;
+  top: -7px;
+  right: -7px;
+  
 }
 
 .CardContainer img {
   width: 300px;
   height: 300px;
   object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
+
+.EditingPageCardDisplay{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 5%;
+  margin-left: 19%;
+  padding-left: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-right: 10%;
+  margin-bottom: 5%;
+  border-radius: 10px;
+  background-color: #51545a;
+  order: 6;
+}
+
+.EditingPageCardDisplay img{
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.EditingPageCardDetails{
+  background-color: #ed8728;
+  margin: 10px;
+  padding-bottom: 0px;
+  color: white;
+  border-radius: 10px;
+  transition: top 1s, right 1s;
+}
+
+.ExerciseDetails{
+  display: flex;
+  flex-direction: column;
+  color: #ed8728;
+  margin-top: 5%;
+  margin-left: 25%;
+  margin-right: 10%;
+  margin-bottom: 5%;
+  padding: 20px;
+  border-radius: 10px;
+ 
+}
+
+.ExerciseDetails img{
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  margin: 5%;
+}
+
 
 .Form {
   display: flex;
   flex-direction: column;
-  padding:2%;
+  padding:10px;
+  margin: 5px;
   border-radius: 5px;
+  justify-content: space-between;
+}
+
+.Form img{
+  width: 300px;
+  height: 300px;
+  object-fit: fill;
+  margin-bottom: 10px;
+}
+
+.Form input {
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
 }
 
 .SideBar {
-  height: 100vh;
+  height: 55vh;
   width: 185px;
-  top:0;
+  top:22%;
   position: fixed;
-  padding-top: 0;
-  padding-left: 5px;
-  left: 0;
-  background-color:slategrey;
+  padding-top: 20px;
+  padding-left: 8px;
+  margin-left: 3%;
+  margin-bottom: 15%;
+  background-color:#51545a;
   opacity: 0.85;
   overflow-y: scroll;
   color: white;
   margin-top: 134px;
+  justify-content: center;
+}
+
+.SideBarList:hover {
+ cursor: pointer;
+ color: #ed8728;
 }
 
 ::-webkit-scrollbar {
@@ -110,15 +273,15 @@ button :hover{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: orange;
+  background-color: #ed8728;
   margin: 50px;
   padding: 3%;
-  border-radius: 5px;
-  color: darkslategray;
+  border-radius: 15px;
+  color: white;
 }
 
 .WorkoutList:hover{
-  background-color: cornflowerblue;
-  box-shadow: 3px 3px 3px 3px rgba(37, 34, 34, 0.541);
+  background-color: #bd6f26;
+
 }
 

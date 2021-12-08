@@ -10,6 +10,7 @@ import WorkoutPage from './WorkoutPage/WorkoutPage';
 function App() {
   
   const [exercisesList, setExercisesList] = useState([])
+  const [filterCategory, setFilterCategory] = useState("All")
   const [musclesList, setMusclesList] = useState([])
   const [currentUser, setCurrentUser] = useState([])
   const [loggedIn, setLoggedIn] = useState(false)
@@ -18,6 +19,15 @@ function App() {
   const [sessionWorkouts, setSessionWorkouts] = useState([])
   const [editWorkout, setEditWorkout] = useState(false)
 
+  function filterExercises(){
+    if (filterCategory !== "All"){
+      const filteredExercises = exercisesList.filter(exercises =>    exercises.muscle.name.includes(filterCategory))
+      return filteredExercises
+    }else{
+      return exercisesList
+    }
+   
+  }
 
   // const id = useParams().id
 
@@ -53,19 +63,19 @@ function App() {
 
     <Switch>
        <Route exact path="/">
-          <Homepage musclesList={musclesList} exercisesList={exercisesList} setExercisesList={setExercisesList}/>
+          <Homepage musclesList={musclesList} exercisesList={filterExercises()} setFilterCategory={setFilterCategory}/>
        </Route>
 
        <Route exact path="/user">
-          <UserPage setLoggedIn={setLoggedIn} setCreateWorkout={setCreateWorkout} userWorkouts={userWorkouts} setUserWorkouts={setUserWorkouts}/>
+          <UserPage setLoggedIn={setLoggedIn} setCreateWorkout={setCreateWorkout} userWorkouts={userWorkouts} setUserWorkouts={setUserWorkouts} setEditWorkout={setEditWorkout}/>
        </Route>
 
        <Route exact path="/edit/:id">
-       <EditingPage musclesList={musclesList} exercisesList={exercisesList} sessionWorkouts={sessionWorkouts} setSessionWorkouts={setSessionWorkouts} setLoggedIn={setLoggedIn} setEditWorkout={setEditWorkout} editWorkout={editWorkout}/>
+       <EditingPage musclesList={musclesList} exercisesList={filterExercises()} sessionWorkouts={sessionWorkouts} setSessionWorkouts={setSessionWorkouts} setLoggedIn={setLoggedIn} setEditWorkout={setEditWorkout} editWorkout={editWorkout} setFilterCategory={setFilterCategory}/>
        </Route>
        
        <Route exact path="/WorkoutSessions/:id">
-        <WorkoutPage sessionWorkouts={sessionWorkouts} setSessionWorkouts={setSessionWorkouts} setLoggedIn={setLoggedIn} editWorkout={editWorkout}/>
+        <WorkoutPage sessionWorkouts={sessionWorkouts} setSessionWorkouts={setSessionWorkouts} setLoggedIn={setLoggedIn} editWorkout={editWorkout} setEditWorkout={setEditWorkout}/>
        </Route>
 
     </Switch>

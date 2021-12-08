@@ -36,7 +36,9 @@ class WorkoutLogsController < ApplicationController
     def destroy
         workoutLog = WorkoutLog.find_by(id: params[:id])
         if workoutLog
-        workoutLog.destroy
+         wo_session = workoutLog.workout_session
+         workoutLog.destroy
+         render json: wo_session
         else
         render json: {error: "Workout session not found"}, status: :not_found
         end

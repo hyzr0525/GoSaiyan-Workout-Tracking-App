@@ -1,16 +1,16 @@
 import React from 'react'
 
-function NavBar({name, setExercisesList, muscleId, exercisesList}) {
+function NavBar({name, setFilterCategory}) {
 
 
-    function filterExercise(){
-        const filteredExercises = exercisesList.filter(exercises => muscleId === exercises.muscle.id)
-        setExercisesList(filteredExercises)
-    }
+    // function filterExercise(){
+    //     const filteredExercises = exercisesList.filter(exercises => muscleId === exercises.muscle.id)
+    //     setExercisesList(filteredExercises)
+    // }
 
 
     return (
-        <div onClick={filterExercise}>
+        <div onClick={() => setFilterCategory(name)}>
             <h4>{name}</h4>
         </div>
     )

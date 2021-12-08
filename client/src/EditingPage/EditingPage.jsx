@@ -7,7 +7,7 @@ import {useParams} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 
 
-function EditingPage({musclesList, sessionWorkouts, exercisesList, setSessionWorkouts, setLoggedIn, editWorkout, setEditWorkout}) {
+function EditingPage({musclesList, sessionWorkouts, exercisesList, setSessionWorkouts, setLoggedIn, editWorkout, setEditWorkout, setFilterCategory}) {
 
     const [note , setNote] = useState([])
     const [workoutSets , setWorkoutSets] = useState([])
@@ -32,9 +32,9 @@ function EditingPage({musclesList, sessionWorkouts, exercisesList, setSessionWor
         })
      }, [])
 
-    const muscleGroups = musclesList.map(muscles => <NavBar key={muscles.id} name={muscles.name}/>)
+    const muscleGroups = musclesList.map(muscles => <NavBar key={muscles.id} name={muscles.name} setFilterCategory={setFilterCategory}/>)
 
-    const userWorkoutSession = sessionWorkouts.workout_logs?.map(workoutLog => (<SideBar key={workoutLog.id} exercise={workoutLog.exercise.name} workoutLogId={workoutLog.id} sessionId={workoutLog.workout_session_id} note={workoutLog.note} sets={workoutLog.set} reps={workoutLog.rep} exerciseImg={workoutLog.exercise.image} muscleName ={workoutLog.exercise.muscle.name} exerciseId={workoutLog.exercise.id} muscleImg={workoutLog.exercise.muscle.image} setNote={setNote} setWorkoutSets={setWorkoutSets} setReps={setReps} setExerciseName={setExerciseName} setExerciseId={setExerciseId} setWorkoutLogId={setWorkoutLogId} setExerciseImg={setExerciseImg} setDesc={setDesc} setMuscleName={setMuscleName} setMuscleImg={setMuscleImg} editWorkout={editWorkout}/>))
+    const userWorkoutSession = sessionWorkouts.workout_logs?.map(workoutLog => (<SideBar key={workoutLog.id} exercise={workoutLog.exercise.name} workoutLogId={workoutLog.id} sessionId={workoutLog.workout_session_id} note={workoutLog.note} sets={workoutLog.set} reps={workoutLog.rep} exerciseImg={workoutLog.exercise.image} muscleName ={workoutLog.exercise.muscle.name} exerciseId={workoutLog.exercise.id} muscleImg={workoutLog.exercise.muscle.image} setNote={setNote} setWorkoutSets={setWorkoutSets} setReps={setReps} setExerciseName={setExerciseName} setExerciseId={setExerciseId} setSessionWorkouts={setSessionWorkouts} setWorkoutLogId={setWorkoutLogId} setExerciseImg={setExerciseImg} setDesc={setDesc} setMuscleName={setMuscleName} setMuscleImg={setMuscleImg} editWorkout={editWorkout}/>))
 
     
 
@@ -42,15 +42,20 @@ function EditingPage({musclesList, sessionWorkouts, exercisesList, setSessionWor
     return (
      <div>
         <div className="NavBar">
+        <div className="MuscleList" onClick={() => setFilterCategory("All")}>
+                <h4>All</h4>
+        </div>
             {muscleGroups}
         </div>
         <div>
         <ExerciseDisplay editWorkout={editWorkout} exercisesList={exercisesList} sessionId={sessionId}/>
         </div>
         <div className="SideBar">
+            <p style={{ fontSize: 20, fontWeight: 'bold' }}>{sessionWorkouts.title}</p>
+            <hr style={{color: "#ed8728"}}/>
             {userWorkoutSession}
-            <Link exact to= "/user">
-            <button class="btn btn-primary">SAVE</button>
+            <Link exact to= {`/WorkoutSessions/${sessionId}`}>
+            <button>SAVE</button>
             </Link>
         </div>
      </div>
