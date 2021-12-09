@@ -1,7 +1,6 @@
 import React from 'react'
 import WorkoutCard from './WorkoutCard'
 import {useState, useEffect} from 'react'
-import {Link} from 'react-router-dom'
 import CreateWorkout from './CreateWorkout'
 
 function UserPage({setLoggedIn, setCreateWorkout, userWorkouts, setUserWorkouts, setEditWorkout}) {
@@ -18,7 +17,7 @@ function UserPage({setLoggedIn, setCreateWorkout, userWorkouts, setUserWorkouts,
         setEditWorkout(false)
     }, [])
 
-    const workoutList = userWorkouts.map(workouts => <Link to={`/WorkoutSessions/${workouts.id}`}> <WorkoutCard title={workouts.title} weekday={workouts.weekday} key={workouts.id}/> </Link>)
+    const workoutList = userWorkouts.map(workouts =>  <WorkoutCard title={workouts.title} workoutId={workouts.id} weekday={workouts.weekday} key={workouts.id} setUserWorkouts={setUserWorkouts}/>)
 
     return (
         <div>

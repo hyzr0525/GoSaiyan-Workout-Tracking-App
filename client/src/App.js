@@ -26,8 +26,8 @@ function App() {
     }else{
       return exercisesList
     }
-   
   }
+
 
   // const id = useParams().id
 

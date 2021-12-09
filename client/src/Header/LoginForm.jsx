@@ -92,7 +92,7 @@ function LoginForm({ open, onClose, formSwitch, setFormSwitch, setCurrentUser, s
         onChange={formFill}
         />
        <input
-        type='text'
+        type='password'
         name='password' 
         placeholder='Input Password'
         onChange={formFill}
@@ -114,7 +114,7 @@ function LoginForm({ open, onClose, formSwitch, setFormSwitch, setCurrentUser, s
         onChange={formSignUP}
         />
         <input
-        type='text'
+        type='password'
         name='password' 
         placeholder='Input Password'
         onChange={formSignUP}
@@ -139,7 +139,7 @@ function LoginForm({ open, onClose, formSwitch, setFormSwitch, setCurrentUser, s
             {formSwitch? loginForm:signUpForm}
             <button className="CloseBtn" onClick={onClose}>X</button>
       </div>
-     </div>
+      </div>
         </>
     )
 }
