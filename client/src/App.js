@@ -75,7 +75,7 @@ function App() {
        </Route>
        
        <Route exact path="/WorkoutSessions/:id">
-        <WorkoutPage sessionWorkouts={sessionWorkouts} setSessionWorkouts={setSessionWorkouts} setLoggedIn={setLoggedIn} editWorkout={editWorkout} setEditWorkout={setEditWorkout}/>
+        <WorkoutPage sessionWorkouts={sessionWorkouts} setSessionWorkouts={setSessionWorkouts} setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} editWorkout={editWorkout} setEditWorkout={setEditWorkout}/>
        </Route>
 
     </Switch>

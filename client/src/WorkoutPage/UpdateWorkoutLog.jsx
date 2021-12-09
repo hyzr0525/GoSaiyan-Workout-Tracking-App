@@ -25,7 +25,7 @@ function UpdateWorkoutLog({id, exerciseId, workoutLogId, setEditLog, setLoggedIn
         .then(res=>res.json())
         .then(LogData => {
              setEditLog(false)
-            setLoggedIn(true)
+            
           })
     }
 

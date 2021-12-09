@@ -17,7 +17,8 @@ class WorkoutLogsController < ApplicationController
     def create
         workoutLog = WorkoutLog.create(workout_log_params)
         if workoutLog.valid?
-            render json: workoutLog, status: :ok
+            user_workout_sessions = current_user.workout_sessions
+            render json: user_workout_sessions, status: :ok
         else
             render json: workoutLog.errors.full_messages, status: :unprocessable_entity
         end

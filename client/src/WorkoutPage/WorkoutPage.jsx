@@ -5,16 +5,16 @@ import {useEffect, useState} from "react"
 import {useParams} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 
-function WorkoutPage({setSessionWorkouts, setLoggedIn, editWorkout, sessionWorkouts, setEditWorkout}) {
+function WorkoutPage({setSessionWorkouts, setLoggedIn, editWorkout, sessionWorkouts, setCurrentUser, setEditWorkout}) {
 
     const [note , setNote] = useState([])
     const [workoutSets , setWorkoutSets] = useState([])
     const [reps , setReps] = useState([])
     const [exerciseName , setExerciseName] = useState([])
-    const [exerciseImg , setExerciseImg] = useState([])
+    const [exerciseImg , setExerciseImg] = useState("https://i.pinimg.com/originals/1f/fd/48/1ffd4837dab3c7fae3d7c46ef8679bbb.gif")
     const [desc , setDesc] = useState([])
     const [muscleName , setMuscleName] = useState([])
-    const [muscleImg , setMuscleImg] = useState([])
+    const [muscleImg , setMuscleImg] = useState("https://i.pinimg.com/474x/3c/53/e4/3c53e484c120a28cbe47d235e47d5d22.jpg")
     const [exerciseId , setExerciseId] = useState([])
     const [workoutLogId , setWorkoutLogId] = useState([])
 
@@ -29,6 +29,16 @@ function WorkoutPage({setSessionWorkouts, setLoggedIn, editWorkout, sessionWorko
            setLoggedIn(true)
            setEditWorkout(false)
         })
+
+        fetch('/me')
+    .then(res => res.json())
+    .then(user => {
+      setCurrentUser(user)
+      if (user = {error: "no active session"}) {
+      setLoggedIn(false)}
+      else {
+      setLoggedIn(true)}
+    })
     }, [])
 
     

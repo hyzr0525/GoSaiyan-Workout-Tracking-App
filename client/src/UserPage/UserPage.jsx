@@ -23,7 +23,7 @@ function UserPage({setLoggedIn, setCreateWorkout, userWorkouts, setUserWorkouts,
         <div>
             <br/>
             <h1 style={{ color: 'white' }}>Sore Today, Strong Tomorrow!</h1>
-            
+            <hr style={{color:"#ed8728", marginLeft: "5%", marginRight:"5%", marginTop:"3%"}}/>
             {workoutList}
             
             <button onClick={createWorkoutPopUp}class="CreateWorkoutBtn"> + Create New Workout</button>

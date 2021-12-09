@@ -2,7 +2,7 @@ import React from 'react'
 import {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 
-function WorkoutLog({editWorkout, id, sessionId}) {
+function WorkoutLog({setSessionWorkouts, editWorkout, id, sessionId, setShowDetail}) {
 
     let history = useHistory();
 
@@ -19,17 +19,19 @@ function WorkoutLog({editWorkout, id, sessionId}) {
     }
 
     function addNewExercise(e){
-        fetch("http://localhost:3000/workout_logs", {
+       
+        fetch("/workout_logs", {
             method : 'POST',
             headers :{"Content-Type":"application/json"},
             body: JSON.stringify(logInput)
         })
         .then(res=>res.json())
-        .then(newWorkoutLogData => {
-            // some conditional logic based on response data
+        .then(newSessionWorkouts => {
+            setSessionWorkouts(newSessionWorkouts)
+            setShowDetail(false)
             // setCurrentUser(currentUser)
             // setLoggedIn(true)
-          })
+        })
     }
 
     return (

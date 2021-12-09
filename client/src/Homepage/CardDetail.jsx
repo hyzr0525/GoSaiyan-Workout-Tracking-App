@@ -25,7 +25,7 @@ const OverLay ={
 }
 
 
-function CardDetail({setShowDetail, open, name, image, muscle, muscleImg, desc, editWorkout, id, sessionId}) {
+function CardDetail({setShowDetail, open, name, image, muscle, muscleImg, desc, editWorkout, id, sessionId, setSessionWorkouts}) {
 
     if (!open) return null
 
@@ -39,7 +39,7 @@ function CardDetail({setShowDetail, open, name, image, muscle, muscleImg, desc, 
             <img src={muscleImg} />
             <h5>Muscle Group: {muscle}</h5>
             <p>{desc}</p>
-            {editWorkout? <WorkoutLog id ={id} editWorkout={editWorkout} sessionId={sessionId}/> : null}
+            {editWorkout? <WorkoutLog id ={id} editWorkout={editWorkout} sessionId={sessionId} setSessionWorkouts={setSessionWorkouts} setShowDetail={setShowDetail}/> : null}
         <button className="CloseBtn" onClick={onClose}>X</button>
             </div>
         </div>

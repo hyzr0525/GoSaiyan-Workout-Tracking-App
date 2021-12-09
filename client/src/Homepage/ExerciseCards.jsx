@@ -3,7 +3,7 @@ import CardDetail from './CardDetail'
 import {useState} from 'react'
 
 
-function ExerciseCards({name, image, muscle, muscleImg, desc, editWorkout, id, sessionId}) {
+function ExerciseCards({name, image, muscle, muscleImg, desc, editWorkout, id, sessionId, setSessionWorkouts}) {
 
     const [showDetail, setShowDetail] = useState(false)
 
@@ -18,7 +18,7 @@ function ExerciseCards({name, image, muscle, muscleImg, desc, editWorkout, id, s
         </div>
 
         <div >
-            <CardDetail open={showDetail} name={name} image={image} muscle={muscle} muscleImg={muscleImg} desc={desc} setShowDetail={setShowDetail} editWorkout={editWorkout} id={id} sessionId={sessionId}/>
+            <CardDetail open={showDetail} name={name} image={image} muscle={muscle} muscleImg={muscleImg} desc={desc} setShowDetail={setShowDetail} editWorkout={editWorkout} id={id} sessionId={sessionId} setSessionWorkouts={setSessionWorkouts}/>
         </div>
      </>
         

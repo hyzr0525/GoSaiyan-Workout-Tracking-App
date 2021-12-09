@@ -47,8 +47,9 @@ function EditingPage({musclesList, sessionWorkouts, exercisesList, setSessionWor
         </div>
             {muscleGroups}
         </div>
+        
         <div>
-        <ExerciseDisplay editWorkout={editWorkout} exercisesList={exercisesList} sessionId={sessionId}/>
+        <ExerciseDisplay editWorkout={editWorkout} exercisesList={exercisesList} sessionId={sessionId} setSessionWorkouts={setSessionWorkouts}/>
         </div>
         <div className="SideBar">
             <p style={{ fontSize: 20, fontWeight: 'bold' }}>{sessionWorkouts.title}</p>
