@@ -47,7 +47,6 @@ function CreateWorkout({open, onClose, setCreateWorkout}) {
         .then(res=>res.json())
         .then(newWorkoutData => {
             setCreateWorkout(newWorkoutData)
-            console.log(newWorkoutData)
             history.push(`/edit/${newWorkoutData.id}`)
         })
     }

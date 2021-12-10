@@ -160,7 +160,7 @@ button:hover{
   color: white;
   border-radius: 10px;
   transition: top 1s, right 1s;
- 
+  box-shadow: 3px 3px 3px 3px #25262998;
 }
 
 .CardDetails:hover{
@@ -192,7 +192,7 @@ button:hover{
   margin-bottom: 5%;
   border-radius: 10px;
   background-color: #51545a;
-  order: 6;
+  
 }
 
 .EditingPageCardDisplay img{
@@ -210,7 +210,16 @@ button:hover{
   color: white;
   border-radius: 10px;
   transition: top 1s, right 1s;
+  box-shadow: 3px 3px 3px 3px #25262998;
 }
+
+.EditingPageCardDetails:hover{
+  cursor: pointer;
+  position: relative;
+  top: -5px;
+  right: -5px;
+}
+
 
 .ExerciseDetails{
   display: flex;

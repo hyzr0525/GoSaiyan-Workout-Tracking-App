@@ -9,20 +9,20 @@ function Header({setUserWorkouts, setCurrentUser, currentUser, setLoggedIn, logg
     const [popUp, setPopUp] = useState(false)
     const [formSwitch, setFormSwitch] = useState(true)
     
-
+    console.log(loggedIn);
     const togglePopUp = () => {setPopUp(true)}
 
-    useEffect(() => {
-        fetch('/me')
-        .then(res => res.json())
-        .then(user => {
-            setCurrentUser(user)
-            if (user = {error: "no active session"}) {
-            setLoggedIn(false)}
-            else {
-            setLoggedIn(true)}
-        }) 
-     }, [])
+    // useEffect(() => {
+    //     fetch('/me')
+    //     .then(res => res.json())
+    //     .then(user => {
+    //         setCurrentUser(user)
+    //         if (user = {error: "no active session"}) {
+    //         setLoggedIn(false)}
+    //         else {
+    //         setLoggedIn(true)}
+    //     }) 
+    //  }, [])
 
 
     return (
@@ -30,7 +30,7 @@ function Header({setUserWorkouts, setCurrentUser, currentUser, setLoggedIn, logg
             
             <Logo />
             
-            { loggedIn === false ? <button onClick={togglePopUp}>Login</button> : null}
+            { loggedIn === false ? <button onClick={togglePopUp}>Login</button> : <LoggedIn setLoggedIn={setLoggedIn} currentUser={currentUser} setUserWorkouts={setUserWorkouts} setPopUp={setPopUp}/>}
 
             {loggedIn === false ? <LoginForm
               open={popUp}
@@ -39,7 +39,7 @@ function Header({setUserWorkouts, setCurrentUser, currentUser, setLoggedIn, logg
               setCurrentUser={setCurrentUser} 
               setLoggedIn={setLoggedIn}
               onClose={() => setPopUp(false)} 
-            /> : <LoggedIn setLoggedIn={setLoggedIn} currentUser={currentUser} setUserWorkouts={setUserWorkouts} setPopUp={setPopUp}/>}
+            /> : null}
 
         </div>
     )

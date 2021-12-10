@@ -32,7 +32,7 @@ function EditingPage({musclesList, sessionWorkouts, exercisesList, setSessionWor
         })
      }, [])
 
-    const muscleGroups = musclesList.map(muscles => <NavBar key={muscles.id} name={muscles.name} setFilterCategory={setFilterCategory}/>)
+    const muscleGroups = musclesList.map(muscles => <div className="MuscleList"> <NavBar key={muscles.id} name={muscles.name} setFilterCategory={setFilterCategory}/></div>)
 
     const userWorkoutSession = sessionWorkouts.workout_logs?.map(workoutLog => (<SideBar key={workoutLog.id} exercise={workoutLog.exercise.name} workoutLogId={workoutLog.id} sessionId={workoutLog.workout_session_id} note={workoutLog.note} sets={workoutLog.set} reps={workoutLog.rep} exerciseImg={workoutLog.exercise.image} muscleName ={workoutLog.exercise.muscle.name} exerciseId={workoutLog.exercise.id} muscleImg={workoutLog.exercise.muscle.image} setNote={setNote} setWorkoutSets={setWorkoutSets} setReps={setReps} setExerciseName={setExerciseName} setExerciseId={setExerciseId} setSessionWorkouts={setSessionWorkouts} setWorkoutLogId={setWorkoutLogId} setExerciseImg={setExerciseImg} setDesc={setDesc} setMuscleName={setMuscleName} setMuscleImg={setMuscleImg} editWorkout={editWorkout}/>))
 
@@ -45,6 +45,7 @@ function EditingPage({musclesList, sessionWorkouts, exercisesList, setSessionWor
         <div className="MuscleList" onClick={() => setFilterCategory("All")}>
                 <h4>All</h4>
         </div>
+        
             {muscleGroups}
         </div>
         

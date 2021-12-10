@@ -39,20 +39,22 @@ function App() {
     fetch("http://localhost:3000/exercises")
     .then(res => res.json())
     .then(data => setExercisesList(data))
+         
 
+  }, [])
+
+  useEffect(() => {
     fetch('/me')
     .then(res => res.json())
     .then(user => {
       setCurrentUser(user)
-      if (user = {error: "no active session"}) {
+      if (user === {error: "no active session"}) {
       setLoggedIn(false)}
       else {
       setLoggedIn(true)}
     })
       
-         
-
-  }, [])
+  }, []) 
 
 
   return (

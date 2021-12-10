@@ -13,7 +13,7 @@ function WorkoutPage({setSessionWorkouts, setLoggedIn, editWorkout, sessionWorko
     const [exerciseName , setExerciseName] = useState([])
     const [exerciseImg , setExerciseImg] = useState("https://i.pinimg.com/originals/1f/fd/48/1ffd4837dab3c7fae3d7c46ef8679bbb.gif")
     const [desc , setDesc] = useState([])
-    const [muscleName , setMuscleName] = useState([])
+    const [muscleName , setMuscleName] = useState("Full Body")
     const [muscleImg , setMuscleImg] = useState("https://i.pinimg.com/474x/3c/53/e4/3c53e484c120a28cbe47d235e47d5d22.jpg")
     const [exerciseId , setExerciseId] = useState([])
     const [workoutLogId , setWorkoutLogId] = useState([])
@@ -29,19 +29,27 @@ function WorkoutPage({setSessionWorkouts, setLoggedIn, editWorkout, sessionWorko
            setLoggedIn(true)
            setEditWorkout(false)
         })
-
-        fetch('/me')
-    .then(res => res.json())
-    .then(user => {
-      setCurrentUser(user)
-      if (user = {error: "no active session"}) {
-      setLoggedIn(false)}
-      else {
-      setLoggedIn(true)}
-    })
     }, [])
 
-    
+    useEffect(() => {
+        if (sessionWorkouts.workout_logs){
+            const firstWorkout =  sessionWorkouts.workout_logs[0]
+            if  (firstWorkout){
+                setDesc(firstWorkout.exercise.desc)
+                setNote(firstWorkout.note)
+                setWorkoutSets(firstWorkout.set)
+                setReps(firstWorkout.rep)
+                setExerciseImg(firstWorkout.exercise.image)
+                setExerciseName(firstWorkout.exercise.name)
+                setMuscleName(firstWorkout.exercise.muscle.name)
+                setMuscleImg(firstWorkout.exercise.muscle.image)
+                setExerciseId(firstWorkout.exercise.id)
+                setWorkoutLogId(firstWorkout.id)
+            }
+        
+        }
+     
+    }, [sessionWorkouts])
 
     const userWorkoutSession = sessionWorkouts.workout_logs?.map(workoutLog => (<SideBar  key={workoutLog.id} desc={workoutLog.exercise.desc} exercise={workoutLog.exercise.name} workoutLogId={workoutLog.id} note={workoutLog.note} sets={workoutLog.set} reps={workoutLog.rep} exerciseImg={workoutLog.exercise.image} muscleName ={workoutLog.exercise.muscle.name} exerciseId={workoutLog.exercise.id} muscleImg={workoutLog.exercise.muscle.image} setNote={setNote} setWorkoutSets={setWorkoutSets} setReps={setReps} setExerciseName={setExerciseName} setExerciseId={setExerciseId} setWorkoutLogId={setWorkoutLogId} setExerciseImg={setExerciseImg} setDesc={setDesc} setMuscleName={setMuscleName} setMuscleImg={setMuscleImg} editWorkout={editWorkout}/>))
 
