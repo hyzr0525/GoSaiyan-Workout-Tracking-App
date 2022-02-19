@@ -22,6 +22,3 @@ function Homepage({musclesList, exercisesList, setFilterCategory}) {
 }
 
 export default Homepage
-// https://i.pinimg.com/originals/28/05/bc/2805bc111fec6a91621cf902d965a0cd.png
-
-// https://cdn.pixabay.com/photo/2017/04/13/14/55/man-2227804_960_720.jpg

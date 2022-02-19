@@ -21,7 +21,7 @@ function App() {
 
   function filterExercises(){
     if (filterCategory !== "All"){
-      const filteredExercises = exercisesList.filter(exercises =>    exercises.muscle.name.includes(filterCategory))
+      const filteredExercises = exercisesList.filter(exercises => exercises.muscle.name.includes(filterCategory))
       return filteredExercises
     }else{
       return exercisesList
