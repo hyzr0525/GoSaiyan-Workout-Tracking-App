@@ -1,9 +1,13 @@
 import React from 'react'
 import ExerciseCards from './ExerciseCards'
+import {useSelector} from 'react-redux'
 
-function CardContainer({exercisesList}) {
+function CardContainer() {
 
-    const exerciseCards = exercisesList.map(exercises =><div className="CardDetails"> <ExerciseCards name={exercises.name} image={exercises.image} key={exercises.id} muscle={exercises.muscle.name} muscleImg={exercises.muscle.image} desc={exercises.desc}/> </div>)
+    const exercises = useSelector((state) => state.exerciseList.exercises)
+    console.log(exercises)
+
+    const exerciseCards = exercises.map(exercises =><div className="CardDetails"> <ExerciseCards name={exercises.name} image={exercises.image} key={exercises.id} muscle={exercises.muscle.name} muscleImg={exercises.muscle.image} desc={exercises.desc}/> </div>)
 
     
     return (
@@ -14,3 +18,5 @@ function CardContainer({exercisesList}) {
 }
 
 export default CardContainer
+
+// const exerciseCards = exercisesList.map(exercises =><div className="CardDetails"> <ExerciseCards name={exercises.name} image={exercises.image} key={exercises.id} muscle={exercises.muscle.name} muscleImg={exercises.muscle.image} desc={exercises.desc}/> </div>)

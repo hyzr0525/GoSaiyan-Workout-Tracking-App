@@ -1,11 +1,13 @@
 import { ActionTypes } from "../action/action-types"
 
-const initialState = {}
+const allExercises = {
+    exercises: [],
+}
 
-export const exercisesList = (state=initialState, action) => {
+export const exercisesList = (state=allExercises, action) => {
     switch(action.type){
         case ActionTypes.GET_EXERCISES_LIST:
-            return action.payload
+            return {...state, exercises: action.payload}
         case ActionTypes.SELECTED_EXERCISE:
             return state;
         default:

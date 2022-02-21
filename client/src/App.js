@@ -3,7 +3,6 @@ import {useEffect, useState} from "react"
 import {Route, Switch} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import { getExercisesList } from './states/action/actionCreater';
-import axios from "axios"
 import Header from './Header/Header';
 import Homepage from './Homepage/Homepage';
 import UserPage from './UserPage/UserPage';
