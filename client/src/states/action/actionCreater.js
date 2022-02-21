@@ -1,6 +1,6 @@
 import { ActionTypes } from "./action-types"
 
-export const setExercisesList = (exercisesList) => {
+export const getExercisesList = (exercisesList) => {
     return {
         type: ActionTypes.GET_EXERCISES_LIST,
         payload: exercisesList,

@@ -1,6 +1,9 @@
 import './App.css';
 import {useEffect, useState} from "react"
 import {Route, Switch} from 'react-router-dom'
+import {useSelector, useDispatch} from 'react-redux'
+import { getExercisesList } from './states/action/actionCreater';
+import axios from "axios"
 import Header from './Header/Header';
 import Homepage from './Homepage/Homepage';
 import UserPage from './UserPage/UserPage';
@@ -18,6 +21,12 @@ function App() {
   const [userWorkouts, setUserWorkouts] = useState([])
   const [sessionWorkouts, setSessionWorkouts] = useState([])
   const [editWorkout, setEditWorkout] = useState(false)
+  const exerciseList = useSelector((state) => state)
+  const dispatchExerciseList = useDispatch();
+
+  console.log(exerciseList)
+
+  
 
   function filterExercises(){
     if (filterCategory !== "All"){
@@ -39,6 +48,10 @@ function App() {
     fetch("http://localhost:3000/exercises")
     .then(res => res.json())
     .then(data => setExercisesList(data))
+
+    fetch("http://localhost:3000/exercises")
+    .then(res => res.json())
+    .then(data => dispatchExerciseList(getExercisesList(data)))
          
 
   }, [])
@@ -48,7 +61,7 @@ function App() {
     .then(res => res.json())
     .then(user => {
       setCurrentUser(user)
-      if (user === {error: "no active session"}) {
+      if (user) {
       setLoggedIn(false)}
       else {
       setLoggedIn(true)}
