@@ -2,7 +2,7 @@ import './App.css';
 import {useEffect, useState} from "react"
 import {Route, Switch} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-import { getExercisesList, getMuscleList } from './states/action/actionCreater';
+import { getExercisesList, getMuscleList, setLoggedIn } from './states/action/actionCreater';
 import Header from './Header/Header';
 import Homepage from './Homepage/Homepage';
 import UserPage from './UserPage/UserPage';
@@ -11,28 +11,20 @@ import WorkoutPage from './WorkoutPage/WorkoutPage';
 
 function App() {
   
-  const [exercisesList, setExercisesList] = useState([])
-  const [filterCategory, setFilterCategory] = useState("All")
-  const [musclesList, setMusclesList] = useState([])
   const [currentUser, setCurrentUser] = useState([])
-  const [loggedIn, setLoggedIn] = useState(false)
   const [createWorkout, setCreateWorkout] = useState([])
   const [userWorkouts, setUserWorkouts] = useState([])
   const [sessionWorkouts, setSessionWorkouts] = useState([])
   const [editWorkout, setEditWorkout] = useState(false)
 
-  const exerciseList = useSelector((state) => state.exerciseList.exercises)
+
   const dispatch = useDispatch();
 
 
   // const id = useParams().id
 
   useEffect(() => {
-    fetch("http://localhost:3000/muscles")
-    .then(res => res.json())
-    .then(data => setMusclesList(data))
-
-
+    
     fetch("http://localhost:3000/exercises")
     .then(res => res.json())
     .then(data => dispatch(getExercisesList(data)))
@@ -40,28 +32,27 @@ function App() {
     fetch("http://localhost:3000/muscles")
     .then(res => res.json())
     .then(data => dispatch(getMuscleList(data)))
-         
-
-  }, [])
-
-  useEffect(() => {
+    
     fetch('/me')
     .then(res => res.json())
     .then(user => {
       setCurrentUser(user)
-      if (user) {
-      setLoggedIn(false)}
+      if (user.id) {
+      dispatch(setLoggedIn(true))}
       else {
-      setLoggedIn(true)}
+      dispatch(setLoggedIn(false))}
     })
-      
-  }, []) 
+
+  }, [])
+
+  console.log(currentUser)
+
 
 
   return (
     <div className="App">
   
-        <Header setCurrentUser={setCurrentUser} currentUser={currentUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+        <Header setCurrentUser={setCurrentUser} currentUser={currentUser}/>
         
 
     <Switch>
@@ -74,7 +65,7 @@ function App() {
        </Route>
 
        <Route exact path="/edit/:id">
-       <EditingPage  sessionWorkouts={sessionWorkouts} setSessionWorkouts={setSessionWorkouts} setLoggedIn={setLoggedIn} setEditWorkout={setEditWorkout} editWorkout={editWorkout} setFilterCategory={setFilterCategory}/>
+       <EditingPage  sessionWorkouts={sessionWorkouts} setSessionWorkouts={setSessionWorkouts} setLoggedIn={setLoggedIn} setEditWorkout={setEditWorkout} editWorkout={editWorkout}/>
        </Route>
        
        <Route exact path="/WorkoutSessions/:id">

@@ -1,7 +1,8 @@
 import React from 'react'
 import {useState} from 'react'
 import {useHistory} from 'react-router-dom'
-
+import { useDispatch } from 'react-redux'
+import { setLoggedIn, setCurrentUser } from '../states/action/actionCreater'
 
 const FormStyle = {
     position: `fixed`,
@@ -25,8 +26,9 @@ const OverLay ={
     zIndex: 1000
 }
 
-function LoginForm({ open, onClose, formSwitch, setFormSwitch, setCurrentUser, setLoggedIn}) {
+function LoginForm({ open, onClose, formSwitch, setFormSwitch}) {
 
+    const dispatch = useDispatch();
     let history = useHistory();
 
     const [input , setInput] = useState({
@@ -60,9 +62,8 @@ function LoginForm({ open, onClose, formSwitch, setFormSwitch, setCurrentUser, s
         })
         .then(res=>res.json())
         .then(currentUser => {
-            // some conditional logic based on response data
-            setCurrentUser(currentUser)
-            setLoggedIn(true)
+            dispatch(setCurrentUser(currentUser))
+            dispatch(setLoggedIn(true))
           })
     }
 
@@ -75,8 +76,8 @@ function LoginForm({ open, onClose, formSwitch, setFormSwitch, setCurrentUser, s
         })
         .then(res=>res.json())
         .then(currentUser => {
-            setCurrentUser(currentUser)
-            setLoggedIn(true)
+            dispatch(setCurrentUser(currentUser))
+            dispatch(setLoggedIn(true))
             history.push('/')
         })
     }

@@ -1,14 +1,17 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {useHistory} from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import {setLoggedIn} from '../states/action/actionCreater'
 
-function LoggedIn({currentUser, setLoggedIn, setPopUp}) {
+function LoggedIn({currentUser, setPopUp}) {
 
+    const dispatch = useDispatch();
     let history = useHistory();
 
     function logOut(){
         fetch("/logout", {method: 'DELETE'})
-        setLoggedIn(false)
+        dispatch(setLoggedIn(false))
         setPopUp(false)
         history.push('/')
     }

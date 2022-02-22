@@ -1,28 +1,16 @@
 import React from 'react'
 import Logo from './Logo'
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import LoginForm from './LoginForm'
 import LoggedIn from './LoggedIn'
+import {useSelector} from "react-redux"
 
-function Header({setUserWorkouts, setCurrentUser, currentUser, setLoggedIn, loggedIn}) {
+function Header({setCurrentUser, currentUser}) {
 
     const [popUp, setPopUp] = useState(false)
     const [formSwitch, setFormSwitch] = useState(true)
-    
-    console.log(loggedIn);
+    const setLoggedIn = useSelector((state) => state.setLoggedIn)
     const togglePopUp = () => {setPopUp(true)}
-
-    // useEffect(() => {
-    //     fetch('/me')
-    //     .then(res => res.json())
-    //     .then(user => {
-    //         setCurrentUser(user)
-    //         if (user = {error: "no active session"}) {
-    //         setLoggedIn(false)}
-    //         else {
-    //         setLoggedIn(true)}
-    //     }) 
-    //  }, [])
 
 
     return (
@@ -30,14 +18,13 @@ function Header({setUserWorkouts, setCurrentUser, currentUser, setLoggedIn, logg
             
             <Logo />
             
-            { loggedIn === false ? <button onClick={togglePopUp}>Login</button> : <LoggedIn setLoggedIn={setLoggedIn} currentUser={currentUser} setUserWorkouts={setUserWorkouts} setPopUp={setPopUp}/>}
+            { setLoggedIn === false ? <button onClick={togglePopUp}>Login</button> : <LoggedIn currentUser={currentUser} setPopUp={setPopUp}/>}
 
-            {loggedIn === false ? <LoginForm
+            {setLoggedIn === false ? <LoginForm
               open={popUp}
               setFormSwitch={setFormSwitch}
               formSwitch={formSwitch}
               setCurrentUser={setCurrentUser} 
-              setLoggedIn={setLoggedIn}
               onClose={() => setPopUp(false)} 
             /> : null}
 

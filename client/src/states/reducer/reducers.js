@@ -32,8 +32,27 @@ export const exercisesList = (state=allExercises, action) => {
 export const musclesList = (state=[], action) => {
     switch(action.type){
         case ActionTypes.GET_MUSCLES_LIST:
-            return state = action.payload
+            return state = action.payload;
         default:
             return state;
     }
+}
+
+export const setLoggedIn = (state = false, action) => {
+    switch(action.type){
+        case ActionTypes.SET_LOGGED_IN:
+            return state = action.payload;
+        default:
+            return state;
+    }
+}
+
+export const setCurrentUser = (state=[], action) =>{
+    switch(action.type){
+        case ActionTypes.SET_CURRENT_USER:
+            return state = action.payload;
+        default:
+            return state;
+    }
+        
 }
