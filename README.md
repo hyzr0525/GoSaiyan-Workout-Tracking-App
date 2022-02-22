@@ -52,6 +52,7 @@ GoSaiyan is a Dragon Ball theme health & fitness app that allows users to create
   <li>Ruby on Rails
   <li>CSS
   <li>PostgreSQL
+  <li>Redux
     
  # Set Up
  
