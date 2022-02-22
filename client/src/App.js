@@ -32,9 +32,6 @@ function App() {
     .then(res => res.json())
     .then(data => setMusclesList(data))
 
-    fetch("http://localhost:3000/exercises")
-    .then(res => res.json())
-    .then(data => setExercisesList(data))
 
     fetch("http://localhost:3000/exercises")
     .then(res => res.json())
