@@ -5,18 +5,20 @@ import {useSelector} from 'react-redux'
 function CardContainer() {
 
     const exercises = useSelector((state) => state.exerciseList.exercises)
+    const muscleGroup = useSelector((state) => state.muscleGroup)
 
-    const exerciseCards = exercises.map(exercises =><div className="CardDetails"> <ExerciseCards name={exercises.name} image={exercises.image} key={exercises.id} muscle={exercises.muscle.name} muscleImg={exercises.muscle.image} desc={exercises.desc}/> </div>)
-
-    function filterExercises(){
-        if (filterCategory !== "All"){
-          const filteredExercises = exercisesList.filter(exercises => exercises.muscle.name.includes(filterCategory))
+    const filteredExercises = () => {
+        if (muscleGroup !== "All"){
+          const filteredExercises = exercises.filter(exercises => exercises.muscle.name.includes(muscleGroup))
           return filteredExercises
         }else{
-          return exercisesList
+          return exercises
         }
       }
-      
+
+      const exerciseCards = filteredExercises().map(exercises =><div className="CardDetails"> <ExerciseCards name={exercises.name} image={exercises.image} key={exercises.id} muscle={exercises.muscle.name} muscleImg={exercises.muscle.image} desc={exercises.desc}/> </div>)
+    
+
     return (
         <div className="CardContainer">
             {exerciseCards}
