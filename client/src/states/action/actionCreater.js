@@ -13,3 +13,10 @@ export const selectedExercise = (exercise) => {
         payload: exercise,
     };
 };
+
+export const filterByMuscles = (muscleGroup) => {
+    return {
+        type: ActionTypes.FILTER_BY_MUSCLES,
+        payload: muscleGroup,
+    };
+};

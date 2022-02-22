@@ -29,8 +29,6 @@ function WorkoutLog({setSessionWorkouts, editWorkout, id, sessionId, setShowDeta
         .then(newSessionWorkouts => {
             setSessionWorkouts(newSessionWorkouts)
             setShowDetail(false)
-            // setCurrentUser(currentUser)
-            // setLoggedIn(true)
         })
     }
 

@@ -5,7 +5,7 @@ import {useEffect, useState} from "react"
 import {useParams} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 
-function WorkoutPage({setSessionWorkouts, setLoggedIn, editWorkout, sessionWorkouts, setCurrentUser, setEditWorkout}) {
+function WorkoutPage({setSessionWorkouts, setLoggedIn, editWorkout, sessionWorkouts, setEditWorkout}) {
 
     const [note , setNote] = useState([])
     const [workoutSets , setWorkoutSets] = useState([])
@@ -53,8 +53,7 @@ function WorkoutPage({setSessionWorkouts, setLoggedIn, editWorkout, sessionWorko
 
     const userWorkoutSession = sessionWorkouts.workout_logs?.map(workoutLog => (<SideBar  key={workoutLog.id} desc={workoutLog.exercise.desc} exercise={workoutLog.exercise.name} workoutLogId={workoutLog.id} note={workoutLog.note} sets={workoutLog.set} reps={workoutLog.rep} exerciseImg={workoutLog.exercise.image} muscleName ={workoutLog.exercise.muscle.name} exerciseId={workoutLog.exercise.id} muscleImg={workoutLog.exercise.muscle.image} setNote={setNote} setWorkoutSets={setWorkoutSets} setReps={setReps} setExerciseName={setExerciseName} setExerciseId={setExerciseId} setWorkoutLogId={setWorkoutLogId} setExerciseImg={setExerciseImg} setDesc={setDesc} setMuscleName={setMuscleName} setMuscleImg={setMuscleImg} editWorkout={editWorkout}/>))
 
-    // const ExerciseDetails = sessionWorkouts.workout_logs?.map(workoutLog => (<ExerciseDetails key={workoutLog.id} exercise={workoutLog.exercise.name} workoutLogId={workoutLog.id}/>))  
-    console.log(sessionWorkouts)
+
     return (
     <div>
         <div className="SideBar">

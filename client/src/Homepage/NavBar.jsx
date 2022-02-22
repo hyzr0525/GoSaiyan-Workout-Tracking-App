@@ -1,16 +1,13 @@
 import React from 'react'
+import {useDispatch} from "react-redux"
+import {filterByMuscles} from "../states/action/actionCreater"
 
 function NavBar({name, setFilterCategory}) {
 
-
-    // function filterExercise(){
-    //     const filteredExercises = exercisesList.filter(exercises => muscleId === exercises.muscle.id)
-    //     setExercisesList(filteredExercises)
-    // }
-
+    const dispatchFilter = useDispatch()
 
     return (
-        <div onClick={() => setFilterCategory(name)}>
+        <div onClick={() => dispatchFilter(filterByMuscles(name))}>
             <h4>{name}</h4>
         </div>
     )

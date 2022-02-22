@@ -20,7 +20,8 @@ function App() {
   const [userWorkouts, setUserWorkouts] = useState([])
   const [sessionWorkouts, setSessionWorkouts] = useState([])
   const [editWorkout, setEditWorkout] = useState(false)
-  const exerciseList = useSelector((state) => state)
+
+  const exerciseList = useSelector((state) => state.exerciseList.exercises)
   const dispatchExerciseList = useDispatch();
 
   console.log(exerciseList)
