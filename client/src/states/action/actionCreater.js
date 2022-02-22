@@ -20,3 +20,10 @@ export const filterByMuscles = (muscleGroup) => {
         payload: muscleGroup,
     };
 };
+
+export const getMuscleList = (musclesList) => {
+    return{
+        type: ActionTypes.GET_MUSCLES_LIST,
+        payload: musclesList
+    }
+}

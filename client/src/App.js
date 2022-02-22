@@ -2,7 +2,7 @@ import './App.css';
 import {useEffect, useState} from "react"
 import {Route, Switch} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-import { getExercisesList } from './states/action/actionCreater';
+import { getExercisesList, getMuscleList } from './states/action/actionCreater';
 import Header from './Header/Header';
 import Homepage from './Homepage/Homepage';
 import UserPage from './UserPage/UserPage';
@@ -22,11 +22,8 @@ function App() {
   const [editWorkout, setEditWorkout] = useState(false)
 
   const exerciseList = useSelector((state) => state.exerciseList.exercises)
-  const dispatchExerciseList = useDispatch();
+  const dispatch = useDispatch();
 
-  console.log(exerciseList)
-
-  
 
   function filterExercises(){
     if (filterCategory !== "All"){
@@ -51,7 +48,11 @@ function App() {
 
     fetch("http://localhost:3000/exercises")
     .then(res => res.json())
-    .then(data => dispatchExerciseList(getExercisesList(data)))
+    .then(data => dispatch(getExercisesList(data)))
+
+    fetch("http://localhost:3000/muscles")
+    .then(res => res.json())
+    .then(data => dispatch(getMuscleList(data)))
          
 
   }, [])
@@ -78,7 +79,7 @@ function App() {
 
     <Switch>
        <Route exact path="/">
-          <Homepage musclesList={musclesList} exercisesList={filterExercises()} setFilterCategory={setFilterCategory}/>
+          <Homepage />
        </Route>
 
        <Route exact path="/user">

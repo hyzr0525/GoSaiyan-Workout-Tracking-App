@@ -6,7 +6,7 @@ function CardContainer() {
 
     const exercises = useSelector((state) => state.exerciseList.exercises)
     const muscleGroup = useSelector((state) => state.muscleGroup)
-
+    
     const filteredExercises = () => {
         if (muscleGroup !== "All"){
           const filteredExercises = exercises.filter(exercises => exercises.muscle.name.includes(muscleGroup))

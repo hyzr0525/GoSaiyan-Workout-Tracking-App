@@ -25,3 +25,12 @@ export const filterByMuscles = (state="", action) => {
             return state;
     }
 }
+
+export const musclesList = (state=[], action) => {
+    switch(action.type){
+        case ActionTypes.GET_MUSCLES_LIST:
+            return state = action.payload
+        default:
+            return state;
+    }
+}
