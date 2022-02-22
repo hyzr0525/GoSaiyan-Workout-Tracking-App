@@ -25,16 +25,6 @@ function App() {
   const dispatch = useDispatch();
 
 
-  function filterExercises(){
-    if (filterCategory !== "All"){
-      const filteredExercises = exercisesList.filter(exercises => exercises.muscle.name.includes(filterCategory))
-      return filteredExercises
-    }else{
-      return exercisesList
-    }
-  }
-
-
   // const id = useParams().id
 
   useEffect(() => {
@@ -87,7 +77,7 @@ function App() {
        </Route>
 
        <Route exact path="/edit/:id">
-       <EditingPage musclesList={musclesList} exercisesList={filterExercises()} sessionWorkouts={sessionWorkouts} setSessionWorkouts={setSessionWorkouts} setLoggedIn={setLoggedIn} setEditWorkout={setEditWorkout} editWorkout={editWorkout} setFilterCategory={setFilterCategory}/>
+       <EditingPage  sessionWorkouts={sessionWorkouts} setSessionWorkouts={setSessionWorkouts} setLoggedIn={setLoggedIn} setEditWorkout={setEditWorkout} editWorkout={editWorkout} setFilterCategory={setFilterCategory}/>
        </Route>
        
        <Route exact path="/WorkoutSessions/:id">

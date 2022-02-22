@@ -5,9 +5,11 @@ import SideBar from './SideBar'
 import {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
 import {Link} from 'react-router-dom'
+import {useSelector, useDispatch} from "react-redux"
+import {filterByMuscles} from "../states/action/actionCreater"
 
 
-function EditingPage({musclesList, sessionWorkouts, exercisesList, setSessionWorkouts, setLoggedIn, editWorkout, setEditWorkout, setFilterCategory}) {
+function EditingPage({sessionWorkouts, exercisesList, setSessionWorkouts, setLoggedIn, editWorkout, setEditWorkout}) {
 
     const [note , setNote] = useState([])
     const [workoutSets , setWorkoutSets] = useState([])
@@ -19,7 +21,9 @@ function EditingPage({musclesList, sessionWorkouts, exercisesList, setSessionWor
     const [muscleImg , setMuscleImg] = useState([])
     const [exerciseId , setExerciseId] = useState([])
     const [workoutLogId , setWorkoutLogId] = useState([])
-
+    
+    const musclesList = useSelector((state)=>state.musclesList)
+    const dispatch = useDispatch()
      const sessionId = useParams().id
 
      useEffect(() => {
@@ -32,7 +36,7 @@ function EditingPage({musclesList, sessionWorkouts, exercisesList, setSessionWor
         })
      }, [])
 
-    const muscleGroups = musclesList.map(muscles => <div className="MuscleList"> <NavBar key={muscles.id} name={muscles.name} setFilterCategory={setFilterCategory}/></div>)
+    const muscleGroups = musclesList.map(muscles => <div className="MuscleList"> <NavBar key={muscles.id} name={muscles.name}/></div>)
 
     const userWorkoutSession = sessionWorkouts.workout_logs?.map(workoutLog => (<SideBar key={workoutLog.id} exercise={workoutLog.exercise.name} workoutLogId={workoutLog.id} sessionId={workoutLog.workout_session_id} note={workoutLog.note} sets={workoutLog.set} reps={workoutLog.rep} exerciseImg={workoutLog.exercise.image} muscleName ={workoutLog.exercise.muscle.name} exerciseId={workoutLog.exercise.id} muscleImg={workoutLog.exercise.muscle.image} setNote={setNote} setWorkoutSets={setWorkoutSets} setReps={setReps} setExerciseName={setExerciseName} setExerciseId={setExerciseId} setSessionWorkouts={setSessionWorkouts} setWorkoutLogId={setWorkoutLogId} setExerciseImg={setExerciseImg} setDesc={setDesc} setMuscleName={setMuscleName} setMuscleImg={setMuscleImg} editWorkout={editWorkout}/>))
 
@@ -42,7 +46,7 @@ function EditingPage({musclesList, sessionWorkouts, exercisesList, setSessionWor
     return (
      <div>
         <div className="NavBar">
-        <div className="MuscleList" onClick={() => setFilterCategory("All")}>
+        <div className="MuscleList" onClick={() => dispatch(filterByMuscles("All"))}>
                 <h4>All</h4>
         </div>
         

@@ -2,6 +2,7 @@ import { ActionTypes } from "../action/action-types"
 
 const allExercises = {
     exercises: [],
+    filteredList: [],
 }
 
 export const exercisesList = (state=allExercises, action) => {
@@ -9,18 +10,20 @@ export const exercisesList = (state=allExercises, action) => {
         case ActionTypes.GET_EXERCISES_LIST:
             return {...state, exercises: action.payload}
 
+        case ActionTypes.FILTER_BY_MUSCLES:
+            const filteredExercises = () => {
+                if (action.payload !== "All"){
+                  const filteredList = state.exercises.filter(exercises => exercises.muscle.name.includes(action.payload))
+                  return {...state, filteredList: filteredList}
+                }else{
+                  return {...state, filteredList: state.exercises}
+                }
+              }
+              return filteredExercises();  
+
         case ActionTypes.SELECTED_EXERCISE:
             return state;
 
-        default:
-            return state;
-    }
-}
-
-export const filterByMuscles = (state="", action) => {
-    switch(action.type){
-        case ActionTypes.FILTER_BY_MUSCLES:
-            return action.payload
         default:
             return state;
     }

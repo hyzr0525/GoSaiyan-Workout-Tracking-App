@@ -7,9 +7,9 @@ import {filterByMuscles} from '../states/action/actionCreater'
 function Homepage() {
 
     const dispatchFilter = useDispatch()
-    const musclesList1 = useSelector((state)=>state.musclesList)
+    const musclesList = useSelector((state)=>state.musclesList)
     
-    const muscleGroups = musclesList1.map(muscles => <div className="MuscleList"><NavBar key={muscles.id} name={muscles.name} muscleId={muscles.id}/></div> )
+    const muscleGroups = musclesList.map(muscles => <div className="MuscleList"><NavBar key={muscles.id} name={muscles.name} muscleId={muscles.id}/></div> )
 
     
     return (

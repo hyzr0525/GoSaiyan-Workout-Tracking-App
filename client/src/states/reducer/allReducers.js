@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux'
-import { exercisesList, filterByMuscles, musclesList } from './reducers'
+
+import { exercisesList, musclesList} from './reducers'
 
 
 const allReducers = combineReducers({
     exerciseList: exercisesList,
-    muscleGroup: filterByMuscles,
     musclesList: musclesList,
 })
 
