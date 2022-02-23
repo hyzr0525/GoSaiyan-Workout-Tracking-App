@@ -24,7 +24,7 @@ const OverLay ={
     zIndex: 1000
 }
 
-function CreateWorkout({open, onClose, setCreateWorkout}) {
+function CreateWorkout({open, onClose}) {
 
     let history = useHistory();
 
@@ -46,7 +46,6 @@ function CreateWorkout({open, onClose, setCreateWorkout}) {
         })
         .then(res=>res.json())
         .then(newWorkoutData => {
-            setCreateWorkout(newWorkoutData)
             history.push(`/edit/${newWorkoutData.id}`)
         })
     }

@@ -12,7 +12,6 @@ import WorkoutPage from './WorkoutPage/WorkoutPage';
 function App() {
   
   const [createWorkout, setCreateWorkout] = useState([])
-  const [userWorkouts, setUserWorkouts] = useState([])
   const [sessionWorkouts, setSessionWorkouts] = useState([])
   const [editWorkout, setEditWorkout] = useState(false)
   const dispatch = useDispatch();
@@ -52,7 +51,7 @@ function App() {
        </Route>
 
        <Route exact path="/user">
-          <UserPage setCreateWorkout={setCreateWorkout} userWorkouts={userWorkouts} setUserWorkouts={setUserWorkouts} setEditWorkout={setEditWorkout}/>
+          <UserPage setCreateWorkout={setCreateWorkout} setEditWorkout={setEditWorkout}/>
        </Route>
 
        <Route exact path="/edit/:id">

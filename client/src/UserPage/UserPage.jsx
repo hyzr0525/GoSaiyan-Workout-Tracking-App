@@ -5,7 +5,7 @@ import CreateWorkout from './CreateWorkout'
 import {useDispatch, useSelector} from "react-redux"
 import {getUserWorkout} from "../states/action/actionCreater"
 
-function UserPage({setCreateWorkout, setEditWorkout}) {
+function UserPage({setEditWorkout}) {
 
     const dispatch = useDispatch()
     const userWorkouts = useSelector((state) => state.getUserWorkout)
@@ -17,7 +17,7 @@ function UserPage({setCreateWorkout, setEditWorkout}) {
         .then(data => 
             dispatch(getUserWorkout(data)))
         setEditWorkout(false)
-    }, [])
+    }, [userWorkouts])
 
     const workoutList = userWorkouts.map(workouts =>  <WorkoutCard title={workouts.title} workoutId={workouts.id} weekday={workouts.weekday} key={workouts.id}/>)
 
@@ -30,7 +30,7 @@ function UserPage({setCreateWorkout, setEditWorkout}) {
             
             <button onClick={() => setPopUp(true)}class="CreateWorkoutBtn"> + Create New Workout</button>
             
-            <CreateWorkout open={popUp} onClose={() => setPopUp(false)}setCreateWorkout={setCreateWorkout}/>
+            <CreateWorkout open={popUp} onClose={() => setPopUp(false)}/>
             
         </div>
     )
