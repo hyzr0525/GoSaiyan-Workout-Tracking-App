@@ -41,3 +41,10 @@ export const setCurrentUser = (user) => {
         payload: user,
     }
 }
+
+export const getUserWorkout = (workoutSession) => {
+    return {
+        type: ActionTypes.GET_USER_WORKOUTS,
+        payload: workoutSession
+    }
+}

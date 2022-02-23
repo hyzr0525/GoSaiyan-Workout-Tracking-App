@@ -31,7 +31,6 @@ function EditingPage({sessionWorkouts, exercisesList, setSessionWorkouts, setLog
          .then(res => res.json())
          .then(data => {
             setSessionWorkouts(data)
-            setLoggedIn(true)
             setEditWorkout(true)
         })
      }, [])

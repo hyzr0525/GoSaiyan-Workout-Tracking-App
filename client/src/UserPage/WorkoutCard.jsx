@@ -1,15 +1,12 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-function WorkoutCard({setUserWorkouts, title, weekday, workoutId}) {
+function WorkoutCard({title, weekday, workoutId}) {
 
     function DeleteWorkoutSession(){
         fetch(`/workout_sessions/${workoutId}`, {
         method: "DELETE"
-    })
-    .then(res => res.json())
-    .then(setUserWorkouts)
-    }
+    })}
 
     
     

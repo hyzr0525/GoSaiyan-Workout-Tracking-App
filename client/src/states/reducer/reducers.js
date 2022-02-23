@@ -56,3 +56,12 @@ export const setCurrentUser = (state=[], action) =>{
     }
         
 }
+
+export const getUserWorkout = (state = [], action) => {
+    switch(action.type){
+        case ActionTypes.GET_USER_WORKOUTS:
+            return state = action.payload
+        default:
+            return state
+    }
+}

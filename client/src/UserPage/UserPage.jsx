@@ -2,22 +2,24 @@ import React from 'react'
 import WorkoutCard from './WorkoutCard'
 import {useState, useEffect} from 'react'
 import CreateWorkout from './CreateWorkout'
+import {useDispatch, useSelector} from "react-redux"
+import {getUserWorkout} from "../states/action/actionCreater"
 
-function UserPage({setLoggedIn, setCreateWorkout, userWorkouts, setUserWorkouts, setEditWorkout}) {
+function UserPage({setCreateWorkout, setEditWorkout}) {
 
+    const dispatch = useDispatch()
+    const userWorkouts = useSelector((state) => state.getUserWorkout)
     const [popUp, setPopUp] = useState(false)
-
-    const createWorkoutPopUp = () => {setPopUp(true)}
 
     useEffect(() => {
         fetch("/workout_sessions")
         .then(res => res.json())
-        .then(data =>setUserWorkouts(data))
-        setLoggedIn(true)
+        .then(data => 
+            dispatch(getUserWorkout(data)))
         setEditWorkout(false)
     }, [])
 
-    const workoutList = userWorkouts.map(workouts =>  <WorkoutCard title={workouts.title} workoutId={workouts.id} weekday={workouts.weekday} key={workouts.id} setUserWorkouts={setUserWorkouts}/>)
+    const workoutList = userWorkouts.map(workouts =>  <WorkoutCard title={workouts.title} workoutId={workouts.id} weekday={workouts.weekday} key={workouts.id}/>)
 
     return (
         <div>
@@ -26,9 +28,8 @@ function UserPage({setLoggedIn, setCreateWorkout, userWorkouts, setUserWorkouts,
             <hr style={{color:"#ed8728", marginLeft: "5%", marginRight:"5%", marginTop:"3%"}}/>
             {workoutList}
             
-            <button onClick={createWorkoutPopUp}class="CreateWorkoutBtn"> + Create New Workout</button>
+            <button onClick={() => setPopUp(true)}class="CreateWorkoutBtn"> + Create New Workout</button>
             
-
             <CreateWorkout open={popUp} onClose={() => setPopUp(false)}setCreateWorkout={setCreateWorkout}/>
             
         </div>
