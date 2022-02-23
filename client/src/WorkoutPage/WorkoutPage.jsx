@@ -5,7 +5,7 @@ import {useEffect, useState} from "react"
 import {useParams} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 
-function WorkoutPage({setSessionWorkouts, setLoggedIn, editWorkout, sessionWorkouts, setEditWorkout}) {
+function WorkoutPage({setSessionWorkouts, editWorkout, sessionWorkouts, setEditWorkout}) {
 
     const [note , setNote] = useState([])
     const [workoutSets , setWorkoutSets] = useState([])
@@ -26,7 +26,6 @@ function WorkoutPage({setSessionWorkouts, setLoggedIn, editWorkout, sessionWorko
         .then(res => res.json())
         .then(data =>{
            setSessionWorkouts(data)
-           setLoggedIn(true)
            setEditWorkout(false)
         })
     }, [])
@@ -66,7 +65,7 @@ function WorkoutPage({setSessionWorkouts, setLoggedIn, editWorkout, sessionWorko
         </div>
 
         <div className="ExerciseDetails">
-            <ExerciseDetails note={note} workoutSets={workoutSets} reps={reps} exerciseName={exerciseName} exerciseImg={exerciseImg} desc={desc} workoutLogId={workoutLogId} muscleName={muscleName} muscleImg={muscleImg} id={id} exerciseId={exerciseId} setLoggedIn={setLoggedIn}/>
+            <ExerciseDetails note={note} workoutSets={workoutSets} reps={reps} exerciseName={exerciseName} exerciseImg={exerciseImg} desc={desc} workoutLogId={workoutLogId} muscleName={muscleName} muscleImg={muscleImg} id={id} exerciseId={exerciseId}/>
         </div>
     </div>
     )

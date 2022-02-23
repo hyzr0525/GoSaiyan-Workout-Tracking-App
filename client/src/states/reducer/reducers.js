@@ -52,7 +52,7 @@ export const setCurrentUser = (state=[], action) =>{
         case ActionTypes.SET_CURRENT_USER:
             return state = action.payload;
         default:
-            return state;
+            return state
     }
         
 }

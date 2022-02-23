@@ -1,11 +1,12 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {useHistory} from 'react-router-dom'
-import {useDispatch} from 'react-redux'
-import {setLoggedIn} from '../states/action/actionCreater'
+import {useDispatch, useSelector} from 'react-redux'
+import {setLoggedIn, } from '../states/action/actionCreater'
 
-function LoggedIn({currentUser, setPopUp}) {
+function LoggedIn({setPopUp}) {
 
+    const currentUser = useSelector((state) => state.setCurrentUser)
     const dispatch = useDispatch();
     let history = useHistory();
 
@@ -15,6 +16,8 @@ function LoggedIn({currentUser, setPopUp}) {
         setPopUp(false)
         history.push('/')
     }
+
+    console.log(currentUser)
 
 
     return (
