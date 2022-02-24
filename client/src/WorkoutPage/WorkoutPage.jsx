@@ -22,8 +22,7 @@ function WorkoutPage({ editWorkout, setEditWorkout}) {
     const dispatch = useDispatch();
     const sessionWorkouts = useSelector((state) => state.getSessionWorkouts)
     const id = useParams().id
-    
-    
+
     useEffect(() => {
         fetch(`/workout_sessions/${id}`)
         .then(res => res.json())
@@ -51,7 +50,7 @@ function WorkoutPage({ editWorkout, setEditWorkout}) {
         }
     }, [sessionWorkouts])
 
-    const userWorkoutSession = sessionWorkouts.workout_logs?.map(workoutLog => (<SideBar  key={workoutLog.id} desc={workoutLog.exercise.desc} exercise={workoutLog.exercise.name} workoutLogId={workoutLog.id} note={workoutLog.note} sets={workoutLog.set} reps={workoutLog.rep} exerciseImg={workoutLog.exercise.image} muscleName ={workoutLog.exercise.muscle.name} exerciseId={workoutLog.exercise.id} muscleImg={workoutLog.exercise.muscle.image} setNote={setNote} setWorkoutSets={setWorkoutSets} setReps={setReps} setExerciseName={setExerciseName} setExerciseId={setExerciseId} setWorkoutLogId={setWorkoutLogId} setExerciseImg={setExerciseImg} setDesc={setDesc} setMuscleName={setMuscleName} setMuscleImg={setMuscleImg} editWorkout={editWorkout}/>))
+    const userWorkoutSession = sessionWorkouts.workout_logs?.map(workoutLog => (<SideBar  workoutData = {workoutLog}key={workoutLog.id} desc={workoutLog.exercise.desc} exercise={workoutLog.exercise.name} workoutLogId={workoutLog.id} note={workoutLog.note} sets={workoutLog.set} reps={workoutLog.rep} exerciseImg={workoutLog.exercise.image} muscleName ={workoutLog.exercise.muscle.name} exerciseId={workoutLog.exercise.id} muscleImg={workoutLog.exercise.muscle.image} setNote={setNote} setWorkoutSets={setWorkoutSets} setReps={setReps} setExerciseName={setExerciseName} setExerciseId={setExerciseId} setWorkoutLogId={setWorkoutLogId} setExerciseImg={setExerciseImg} setDesc={setDesc} setMuscleName={setMuscleName} setMuscleImg={setMuscleImg} editWorkout={editWorkout}/>))
 
 
     return (

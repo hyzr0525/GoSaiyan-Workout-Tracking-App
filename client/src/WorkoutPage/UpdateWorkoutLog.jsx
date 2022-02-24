@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
 
-function UpdateWorkoutLog({id, exerciseId, workoutLogId, setEditLog, setLoggedIn}) {
+function UpdateWorkoutLog({id, exerciseId, workoutLogId, setEditLog}) {
 
     const [logInput , setLogInput] = useState({
         set: "",
@@ -16,7 +16,8 @@ function UpdateWorkoutLog({id, exerciseId, workoutLogId, setEditLog, setLoggedIn
         
     }
 
-    function updateLog(){
+    function updateLog(e){
+        e.preventDefault()
         fetch(`http://localhost:3000/workout_logs/${workoutLogId}`, {
             method : 'Put',
             headers :{"Content-Type":"application/json"},
