@@ -65,3 +65,12 @@ export const getUserWorkout = (state = [], action) => {
             return state
     }
 }
+
+export const getSessionWorkouts = (state = [], action) => {
+    switch(action.type){
+        case ActionTypes.GET_SESSION_WORKOUTS:
+            return state = action.payload
+        default:
+            return state
+    }
+}

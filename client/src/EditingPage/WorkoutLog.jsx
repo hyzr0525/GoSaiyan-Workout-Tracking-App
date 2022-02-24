@@ -1,10 +1,8 @@
 import React from 'react'
 import {useState} from 'react'
-import {useHistory} from 'react-router-dom'
 
-function WorkoutLog({setSessionWorkouts, editWorkout, id, sessionId, setShowDetail}) {
+function WorkoutLog({setSessionWorkouts, id, sessionId, setShowDetail}) {
 
-    let history = useHistory();
 
     const [logInput , setLogInput] = useState({
         set: "",
@@ -18,7 +16,7 @@ function WorkoutLog({setSessionWorkouts, editWorkout, id, sessionId, setShowDeta
         setLogInput({...logInput, [e.target.name]: e.target.value})
     }
 
-    function addNewExercise(e){
+    function addNewExercise(){
        
         fetch("/workout_logs", {
             method : 'POST',

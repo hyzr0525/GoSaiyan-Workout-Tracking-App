@@ -48,3 +48,10 @@ export const getUserWorkout = (workoutSession) => {
         payload: workoutSession
     }
 }
+
+export const getSessionWorkouts = (workouts) => {
+    return {
+        type: ActionTypes.GET_SESSION_WORKOUTS,
+        payload: workouts
+    }
+}

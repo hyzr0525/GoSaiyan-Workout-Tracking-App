@@ -5,7 +5,7 @@ import CreateWorkout from './CreateWorkout'
 import {useDispatch, useSelector} from "react-redux"
 import {getUserWorkout} from "../states/action/actionCreater"
 
-function UserPage({setEditWorkout}) {
+function UserPage() {
 
     const dispatch = useDispatch()
     const userWorkouts = useSelector((state) => state.getUserWorkout)
@@ -14,9 +14,7 @@ function UserPage({setEditWorkout}) {
     useEffect(() => {
         fetch("/workout_sessions")
         .then(res => res.json())
-        .then(data => 
-            dispatch(getUserWorkout(data)))
-        setEditWorkout(false)
+        .then(data => dispatch(getUserWorkout(data)))
     }, [userWorkouts])
 
     const workoutList = userWorkouts.map(workouts =>  <WorkoutCard title={workouts.title} workoutId={workouts.id} weekday={workouts.weekday} key={workouts.id}/>)

@@ -4,8 +4,10 @@ import ExerciseDetails from './ExerciseDetails'
 import {useEffect, useState} from "react"
 import {useParams} from 'react-router-dom'
 import {Link} from 'react-router-dom'
+import {useDispatch, useSelector} from "react-redux"
+import {getSessionWorkouts} from "../states/action/actionCreater"
 
-function WorkoutPage({setSessionWorkouts, editWorkout, sessionWorkouts, setEditWorkout}) {
+function WorkoutPage({ editWorkout, setEditWorkout}) {
 
     const [note , setNote] = useState([])
     const [workoutSets , setWorkoutSets] = useState([])
@@ -17,7 +19,8 @@ function WorkoutPage({setSessionWorkouts, editWorkout, sessionWorkouts, setEditW
     const [muscleImg , setMuscleImg] = useState("https://i.pinimg.com/474x/3c/53/e4/3c53e484c120a28cbe47d235e47d5d22.jpg")
     const [exerciseId , setExerciseId] = useState([])
     const [workoutLogId , setWorkoutLogId] = useState([])
-
+    const dispatch = useDispatch();
+    const sessionWorkouts = useSelector((state) => state.getSessionWorkouts)
     const id = useParams().id
     
     
@@ -25,7 +28,7 @@ function WorkoutPage({setSessionWorkouts, editWorkout, sessionWorkouts, setEditW
         fetch(`/workout_sessions/${id}`)
         .then(res => res.json())
         .then(data =>{
-           setSessionWorkouts(data)
+           dispatch(getSessionWorkouts(data))
            setEditWorkout(false)
         })
     }, [])
@@ -45,9 +48,7 @@ function WorkoutPage({setSessionWorkouts, editWorkout, sessionWorkouts, setEditW
                 setExerciseId(firstWorkout.exercise.id)
                 setWorkoutLogId(firstWorkout.id)
             }
-        
         }
-     
     }, [sessionWorkouts])
 
     const userWorkoutSession = sessionWorkouts.workout_logs?.map(workoutLog => (<SideBar  key={workoutLog.id} desc={workoutLog.exercise.desc} exercise={workoutLog.exercise.name} workoutLogId={workoutLog.id} note={workoutLog.note} sets={workoutLog.set} reps={workoutLog.rep} exerciseImg={workoutLog.exercise.image} muscleName ={workoutLog.exercise.muscle.name} exerciseId={workoutLog.exercise.id} muscleImg={workoutLog.exercise.muscle.image} setNote={setNote} setWorkoutSets={setWorkoutSets} setReps={setReps} setExerciseName={setExerciseName} setExerciseId={setExerciseId} setWorkoutLogId={setWorkoutLogId} setExerciseImg={setExerciseImg} setDesc={setDesc} setMuscleName={setMuscleName} setMuscleImg={setMuscleImg} editWorkout={editWorkout}/>))
@@ -65,7 +66,7 @@ function WorkoutPage({setSessionWorkouts, editWorkout, sessionWorkouts, setEditW
         </div>
 
         <div className="ExerciseDetails">
-            <ExerciseDetails note={note} workoutSets={workoutSets} reps={reps} exerciseName={exerciseName} exerciseImg={exerciseImg} desc={desc} workoutLogId={workoutLogId} muscleName={muscleName} muscleImg={muscleImg} id={id} exerciseId={exerciseId}/>
+            <ExerciseDetails note={note} workoutSets={workoutSets} reps={reps} exerciseName={exerciseName} exerciseImg={exerciseImg} desc={desc} workoutLogId={workoutLogId} muscleName={muscleName} muscleImg={muscleImg} id={id} exerciseId={exerciseId} />
         </div>
     </div>
     )

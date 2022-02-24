@@ -7,4 +7,5 @@ export const ActionTypes = {
     SET_LOGGED_IN: "setLoggedIn",
     SET_CURRENT_USER: "setCurrentUser",
     GET_USER_WORKOUTS: "getUserWorkout",
+    GET_SESSION_WORKOUTS: "getSessionWorkouts"
 }

@@ -17,9 +17,6 @@ function LoggedIn({setPopUp}) {
         history.push('/')
     }
 
-    console.log(currentUser)
-
-
     return (
         <div className="Logged-in">
             <p>Welcome, {currentUser.username}!</p>

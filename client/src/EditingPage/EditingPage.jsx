@@ -9,7 +9,7 @@ import {useSelector, useDispatch} from "react-redux"
 import {filterByMuscles} from "../states/action/actionCreater"
 
 
-function EditingPage({sessionWorkouts, exercisesList, setSessionWorkouts, setLoggedIn, editWorkout, setEditWorkout}) {
+function EditingPage({sessionWorkouts, exercisesList, setSessionWorkouts}) {
 
     const [note , setNote] = useState([])
     const [workoutSets , setWorkoutSets] = useState([])
@@ -21,7 +21,8 @@ function EditingPage({sessionWorkouts, exercisesList, setSessionWorkouts, setLog
     const [muscleImg , setMuscleImg] = useState([])
     const [exerciseId , setExerciseId] = useState([])
     const [workoutLogId , setWorkoutLogId] = useState([])
-    
+    const [editWorkout, setEditWorkout] = useState(false)
+
     const musclesList = useSelector((state)=>state.musclesList)
     const dispatch = useDispatch()
      const sessionId = useParams().id

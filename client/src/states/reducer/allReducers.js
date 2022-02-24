@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux'
-import { exercisesList, musclesList, setLoggedIn, setCurrentUser, getUserWorkout} from './reducers'
+import { exercisesList, musclesList, setLoggedIn, setCurrentUser, getUserWorkout, getSessionWorkouts} from './reducers'
 
 
 const allReducers = combineReducers({
@@ -8,6 +8,7 @@ const allReducers = combineReducers({
     setLoggedIn: setLoggedIn,
     setCurrentUser: setCurrentUser,
     getUserWorkout: getUserWorkout,
+    getSessionWorkouts: getSessionWorkouts,
 })
 
 export default allReducers
