@@ -14,7 +14,7 @@ body{
   background-color: #ed8728;
   color: white;
   padding: 2%;
-  width: 100vw;
+  max-width: 100em;
   height: 25vh;
   background-image: url(http://www.skinit.com/media/catalog/category/dragon-ball-z_1_1.jpg);
   background-size:cover;

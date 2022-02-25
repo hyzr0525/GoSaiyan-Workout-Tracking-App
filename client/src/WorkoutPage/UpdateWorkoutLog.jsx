@@ -16,8 +16,7 @@ function UpdateWorkoutLog({id, exerciseId, workoutLogId, setEditLog}) {
         
     }
 
-    function updateLog(e){
-        e.preventDefault()
+    function updateLog(){
         fetch(`http://localhost:3000/workout_logs/${workoutLogId}`, {
             method : 'Put',
             headers :{"Content-Type":"application/json"},
