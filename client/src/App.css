@@ -190,13 +190,13 @@ button:hover{
 .EditingPageCardDisplay{
   display: flex;
   flex-direction: row;
+  justify-content: center;
   flex-wrap: wrap;
   margin-top: 2%;
-  margin-left: 19%;
-  padding-left: 30px;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
   margin-right: 10%;
+  margin-left: 10%;
   margin-bottom: 5%;
   border-radius: 10px;
   background-color: #51545a;
@@ -213,7 +213,7 @@ button:hover{
 
 .EditingPageCardDetails{
   background-color: #ed8728;
-  margin: 10px;
+  margin: 1rem;
   padding-bottom: 0px;
   color: white;
   border-radius: 10px;
@@ -233,9 +233,10 @@ button:hover{
   display: flex;
   flex-direction: column;
   color: #ed8728;
+  justify-content: center;
   margin-top: 5%;
-  margin-left: 25%;
-  margin-right: 10%;
+  margin-left: 15%;
+  margin-right: 15%;
   margin-bottom: 5%;
   padding: 20px;
   border-radius: 10px;
@@ -275,7 +276,7 @@ button:hover{
 .SideBar {
   display: flex;
   flex-direction: row;
-  height: 65vh;
+  height: 65.5vh;
   width: 2rem;
   top: 0rem;
   position: fixed;
