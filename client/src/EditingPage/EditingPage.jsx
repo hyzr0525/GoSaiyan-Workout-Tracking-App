@@ -64,7 +64,7 @@ function EditingPage({sessionWorkouts, exercisesList, setSessionWorkouts}) {
             <button>SAVE</button>
             </Link>
         </div>
-        <i class="bi bi-chevron-double-right" style={{ fontSize: 20 }}></i>
+        <i class="bi bi-chevron-double-right" style={{ fontSize: 20}}></i>
         </div>
      </div>
     )

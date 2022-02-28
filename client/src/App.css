@@ -279,7 +279,7 @@ button:hover{
   width: 2rem;
   top: 0rem;
   position: fixed;
-  padding-top: 0rem;
+  padding-top: 1.5rem;
   padding-left: 0.5rem;
   background-color:#51545a;
   opacity: 0.85;
@@ -288,13 +288,14 @@ button:hover{
   color: white;
   margin-top: 20rem;
   border-radius: 10px;
-  align-content: center;
-  justify-content: center;
+  align-items: center;
   transition: 200ms ease;
 }
 
 .SideBar:hover{
   width: 15rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .SideBarItem{
@@ -303,7 +304,8 @@ button:hover{
 
 .SideBar:hover .SideBarItem{
   display:block;
-
+  display: flex;
+  flex-direction: column;
 }
 
 .SideBarList:hover {
