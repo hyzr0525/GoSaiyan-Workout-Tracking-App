@@ -148,13 +148,12 @@ button:hover{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  order: 4;
   justify-content: space-evenly;
-  margin-top: 2%;
+  margin-top: 2rem;
   margin-left: 10%;
   margin-right: 10%;
   margin-bottom: 10%;
-  padding-top: 5%;
+  padding: 2%;
   color: #252629;
   background-color: #51545a ;
   border-radius: 10px;
@@ -353,4 +352,3 @@ button:hover{
   border-radius: 15px;
   color: white;
 }
-
