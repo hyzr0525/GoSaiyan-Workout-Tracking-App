@@ -1,7 +1,8 @@
 import React from 'react'
 
 
-function SideBar({exerciseImg, setSessionWorkouts, muscleName, muscleImg, sets, reps, note, exercise, workoutLogId, desc, setNote, setWorkoutSets, setReps, setExerciseName, setExerciseImg, setDesc, setMuscleName, setMuscleImg, setExerciseId, exerciseId, setWorkoutLogId, editWorkout, workoutData}) {
+
+function SideBar({exerciseImg, setSessionWorkouts, muscleName, muscleImg, sets, reps, note, exercise, workoutLogId, desc, setNote, setWorkoutSets, setReps, setExerciseName, setExerciseImg, setDesc, setMuscleName, setMuscleImg, setExerciseId, exerciseId, setWorkoutLogId, editWorkout}) {
 
 
     function deleteExercise(){

@@ -49,7 +49,6 @@ function EditingPage({sessionWorkouts, exercisesList, setSessionWorkouts}) {
         <div className="MuscleList" onClick={() => dispatch(filterByMuscles("All"))}>
                 <h4>All</h4>
         </div>
-        
             {muscleGroups}
         </div>
         
@@ -57,12 +56,15 @@ function EditingPage({sessionWorkouts, exercisesList, setSessionWorkouts}) {
         <ExerciseDisplay editWorkout={editWorkout} exercisesList={exercisesList} sessionId={sessionId} setSessionWorkouts={setSessionWorkouts}/>
         </div>
         <div className="SideBar">
+        <div className='SideBarItem'>
             <p style={{ fontSize: 20, fontWeight: 'bold' }}>{sessionWorkouts.title}</p>
             <hr style={{color: "#ed8728"}}/>
             {userWorkoutSession}
             <Link exact to= {`/WorkoutSessions/${sessionId}`}>
             <button>SAVE</button>
             </Link>
+        </div>
+        <i class="bi bi-chevron-double-right" style={{ fontSize: 20 }}></i>
         </div>
      </div>
     )

@@ -4,6 +4,8 @@
 
 body{
   background-color: #252629 ;
+  margin: 0;
+  padding: 0;
 }
 
 .Header {
@@ -14,8 +16,8 @@ body{
   background-color: #ed8728;
   color: white;
   padding: 2%;
-  max-width: 100em;
-  height: 25vh;
+  width: 100%;
+  height: 20rem;
   background-image: url(http://www.skinit.com/media/catalog/category/dragon-ball-z_1_1.jpg);
   background-size:cover;
   background-position:center;
@@ -39,6 +41,13 @@ body{
   display: flex;
   flex-direction: column;
   padding: 10px;
+  border-style: solid;
+  border-color: red;
+}
+
+.logged-in button :hover{
+  border-bottom: red;
+  border-style: solid;
 }
 
 a {
@@ -115,12 +124,12 @@ button:hover{
 }
 
 .DeleteBtn{
-  background-color: #51545a;
+  background-color: transparent;
 }
 
 .DeleteBtn:hover{
-  color: #ed8728;
-  background-color:#51545a ;
+  color: black;
+  background-color: transparent;
 }
 
 .CreateWorkoutBtn{
@@ -134,7 +143,6 @@ button:hover{
   background-color:#252629 ;
 
 }
-
 
 .CardContainer {
   display: flex;
@@ -265,26 +273,48 @@ button:hover{
 }
 
 .SideBar {
-  height: 55vh;
-  width: 185px;
-  top:22%;
+  display: flex;
+  flex-direction: row;
+  height: 65vh;
+  width: 2rem;
+  top: 0rem;
   position: fixed;
-  padding-top: 20px;
-  padding-left: 8px;
-  margin-left: 3%;
-  margin-bottom: 15%;
+  padding-top: 0rem;
+  padding-left: 0.5rem;
   background-color:#51545a;
   opacity: 0.85;
   overflow-y: scroll;
+  overflow-x: hidden;
   color: white;
-  margin-top: 134px;
-  justify-content: center;
+  margin-top: 20rem;
   border-radius: 10px;
+  align-content: center;
+  justify-content: center;
+  transition: 200ms ease;
+}
+
+.SideBar:hover{
+  width: 15rem;
+}
+
+.SideBarItem{
+  display:none;
+}
+
+.SideBar:hover .SideBarItem{
+  display:block;
+
 }
 
 .SideBarList:hover {
  cursor: pointer;
- color: #ed8728;
+ color: white;
+ background-color: #ed8728;
+ border-radius: 10px;
+}
+
+.SideBarList{
+  padding: 1rem 2.5rem 0.5rem 2.5rem;
 }
 
 ::-webkit-scrollbar {
@@ -293,7 +323,6 @@ button:hover{
 
 ::-webkit-scrollbar-thumb{
   background:slategrey;
-
 }
 
 .WorkoutList {

@@ -56,12 +56,15 @@ function WorkoutPage({ editWorkout, setEditWorkout}) {
     return (
     <div>
         <div className="SideBar">
-        <p style={{ fontSize: 20, fontWeight: 'bold' }}>{sessionWorkouts.title}</p>
-        <hr style={{color: "#ed8728"}}/>
-        {userWorkoutSession}
-        <Link exact to={`/edit/${id}`}>
-        <button>Edit Workout</button>
-        </Link>
+         <div className='SideBarItem'>
+          <p style={{ fontSize: 20, fontWeight: 'bold' }}>{sessionWorkouts.title}</p>
+          <hr style={{color: "#ed8728"}}/>
+          {userWorkoutSession}
+          <Link exact to={`/edit/${id}`}>
+          <button>Edit Workout</button>
+          </Link>
+         </div>
+         <i class="bi bi-chevron-double-right" style={{ fontSize: 20 }}></i>
         </div>
 
         <div className="ExerciseDetails">

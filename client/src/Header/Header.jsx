@@ -4,6 +4,8 @@ import {useState} from 'react'
 import LoginForm from './LoginForm'
 import LoggedIn from './LoggedIn'
 import {useSelector} from "react-redux"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 function Header({setCurrentUser, currentUser}) {
 
@@ -15,9 +17,9 @@ function Header({setCurrentUser, currentUser}) {
 
     return (
         <div className="Header">
-            
+            <FontAwesomeIcon icon="fa-solid fa-square-caret-right" />
             <Logo />
-            
+            <i class="bi bi-caret-right-square-fill"></i>
             { setLoggedIn === false ? <button onClick={togglePopUp}>Login</button> : <LoggedIn currentUser={currentUser} setPopUp={setPopUp}/>}
 
             {setLoggedIn === false ? <LoginForm

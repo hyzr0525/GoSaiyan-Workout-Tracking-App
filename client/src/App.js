@@ -43,7 +43,6 @@ function App() {
     <div className="App">
 
         <Header />
-  
     <Switch>
        <Route exact path="/">
           <Homepage />
@@ -60,7 +59,7 @@ function App() {
        <Route exact path="/WorkoutSessions/:id">
         <WorkoutPage editWorkout={editWorkout} setEditWorkout={setEditWorkout}/>
        </Route>
-
+    
     </Switch>
     </div>
   );
