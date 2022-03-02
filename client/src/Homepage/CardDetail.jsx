@@ -2,17 +2,6 @@ import React from 'react'
 import WorkoutLog from '../EditingPage/WorkoutLog'
 
 
-const FormStyle = {
-    position: `absolute`,
-    top: `50%`,
-    left: '20%',
-    transform: `translate(-13%, -50%)`,
-    backgroundColor: `#FFF`,
-    zIndex: 1000,
-    padding: `20px`,
-    borderRadius: `10px`,
-    color: `#252629`
-}
 
 const OverLay ={
     position: `fixed`,
@@ -32,8 +21,8 @@ function CardDetail({setShowDetail, open, name, image, muscle, muscleImg, desc, 
     const onClose = () => {setShowDetail(false)}
 
     return (
-        <div style={OverLay}>
-            <div style={FormStyle}>
+        <div className='OverLay'>
+            <div className='FormStyle'>
             <h3 style={{ padding:"20px" }}>{name}</h3>
             <img src={image} />
             <img src={muscleImg} />

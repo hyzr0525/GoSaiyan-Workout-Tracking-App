@@ -368,3 +368,37 @@ button:hover{
   border-radius: 15px;
   color: white;
 }
+
+.FormStyle {
+  position: absolute;
+  max-width: 85%;
+  max-height: 75%;
+  display: block;
+  justify-content: center;
+  background-color: #FFF;
+  z-index: 1000;
+  padding: 2em;
+  border-radius: 10px;
+  color: #252629;
+  overflow-y:scroll;
+}
+
+.FormStyle img{
+  max-width: 100%;
+  padding: 1em;
+}
+
+.OverLay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .7);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
