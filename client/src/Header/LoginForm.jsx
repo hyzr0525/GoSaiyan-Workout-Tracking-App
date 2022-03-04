@@ -4,33 +4,11 @@ import {useHistory} from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setLoggedIn, setCurrentUser } from '../states/action/actionCreater'
 
-const FormStyle = {
-    position: `fixed`,
-    top: `50%`,
-    left: '50%',
-    transform: `translate(-50%, -50%)`,
-    backgroundColor: `#FFF`,
-    zIndex: 1000,
-    padding: `100px`,
-    borderRadius: `10px`,
-    
-}
-
-const OverLay ={
-    position: `fixed`,
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: `rgba(0, 0, 0, .7)`,
-    zIndex: 1000
-}
-
 function LoginForm({ open, onClose, formSwitch, setFormSwitch}) {
 
     const dispatch = useDispatch();
     let history = useHistory();
-
+    const [validUser, setValidUser] = useState(true)
     const [input , setInput] = useState({
         username: "",
         password: "",
@@ -62,8 +40,12 @@ function LoginForm({ open, onClose, formSwitch, setFormSwitch}) {
         })
         .then(res=>res.json())
         .then(currentUser => {
+            if(currentUser.error){
+                setValidUser(false)
+            }else{
             dispatch(setCurrentUser(currentUser))
             dispatch(setLoggedIn(true))
+            }
           })
     }
 
@@ -101,7 +83,8 @@ function LoginForm({ open, onClose, formSwitch, setFormSwitch}) {
        <button
        type='submit'>Sign In</button>
      </form>
-       <button onClick={()=>setFormSwitch(false)}>Sign Up</button>
+       <button className='SignUpBtn' onClick={()=>setFormSwitch(false)}>Sign Up</button>
+       {validUser? null: <p style={{color: "red"}}>please input valid Username and Password</p>}
     </>
 
     const signUpForm =
@@ -135,8 +118,8 @@ function LoginForm({ open, onClose, formSwitch, setFormSwitch}) {
 
     return (
         <>
-     <div style={OverLay}>
-       <div style={FormStyle}>
+     <div className='OverLay'>
+       <div className='FormStyle'>
             {formSwitch? loginForm:signUpForm}
             <button className="CloseBtn" onClick={onClose}>X</button>
       </div>

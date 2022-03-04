@@ -30,10 +30,11 @@ function App() {
     .then(res => res.json())
     .then(user => {
       dispatch(setCurrentUser(user))
-      if (user.id) {
-      dispatch(setLoggedIn(true))}
+      if (user.error) {
+      dispatch(setLoggedIn(false))
+      console.log(user.error)}
       else {
-      dispatch(setLoggedIn(false))}
+      dispatch(setLoggedIn(true))}
     })
 
   }, [])
